@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+
+<html class="scroll-smooth" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>ENGINEER_V01 | Architecting Next-Gen Intelligence</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&amp;family=JetBrains+Mono:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "tertiary-fixed": "#eae1d8",
+                    "on-primary": "#ffffff",
+                    "background": "#fff8f8",
+                    "on-primary-container": "#ff7ba6",
+                    "surface-container-high": "#f8e3e7",
+                    "on-tertiary": "#ffffff",
+                    "surface-container": "#fee9ec",
+                    "on-error-container": "#93000a",
+                    "primary-container": "#7a003c",
+                    "on-tertiary-fixed-variant": "#4b463f",
+                    "secondary": "#605e5a",
+                    "on-background": "#24191b",
+                    "on-surface-variant": "#564146",
+                    "secondary-container": "#e6e2dd",
+                    "tertiary-container": "#403b35",
+                    "on-error": "#ffffff",
+                    "secondary-fixed-dim": "#cac6c1",
+                    "outline-variant": "#dcbfc5",
+                    "surface-tint": "#a92e5f",
+                    "surface-container-low": "#fff0f2",
+                    "surface-variant": "#f3dde1",
+                    "on-secondary-container": "#666460",
+                    "surface-container-lowest": "#ffffff",
+                    "surface": "#fff8f8",
+                    "inverse-on-surface": "#ffecef",
+                    "tertiary": "#2a2520",
+                    "surface-bright": "#fff8f8",
+                    "surface-container-highest": "#f3dde1",
+                    "on-surface": "#24191b",
+                    "on-primary-fixed": "#3f001c",
+                    "primary-fixed-dim": "#ffb1c6",
+                    "secondary-fixed": "#e6e2dd",
+                    "inverse-surface": "#3a2d30",
+                    "error-container": "#ffdad6",
+                    "on-tertiary-fixed": "#1f1b16",
+                    "on-secondary-fixed-variant": "#484643",
+                    "on-secondary-fixed": "#1d1b19",
+                    "primary": "#520026",
+                    "surface-dim": "#ead5d9",
+                    "on-tertiary-container": "#ada59d",
+                    "on-secondary": "#ffffff",
+                    "primary-fixed": "#ffd9e1",
+                    "on-primary-fixed-variant": "#891247",
+                    "tertiary-fixed-dim": "#cec5bc",
+                    "outline": "#897176",
+                    "inverse-primary": "#ffb1c6",
+                    "error": "#ba1a1a"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "margin-mobile": "20px",
+                    "gutter": "24px",
+                    "margin-desktop": "80px",
+                    "container-max": "1440px",
+                    "base": "8px"
+            },
+            "fontFamily": {
+                    "headline-md": ["Playfair Display"],
+                    "metadata-caps": ["JetBrains Mono"],
+                    "label-mono-md": ["JetBrains Mono"],
+                    "display-lg": ["Playfair Display"],
+                    "display-lg-mobile": ["Playfair Display"],
+                    "label-mono-sm": ["JetBrains Mono"],
+                    "body-main": ["Playfair Display"]
+            },
+            "fontSize": {
+                    "headline-md": ["32px", {"lineHeight": "1.2", "fontWeight": "600"}],
+                    "metadata-caps": ["10px", {"lineHeight": "1.0", "fontWeight": "700"}],
+                    "label-mono-md": ["14px", {"lineHeight": "1.4", "fontWeight": "400"}],
+                    "display-lg": ["64px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "display-lg-mobile": ["40px", {"lineHeight": "1.1", "fontWeight": "700"}],
+                    "label-mono-sm": ["12px", {"lineHeight": "1.5", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                    "body-main": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(40px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .reveal { animation: fadeInUp 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards; opacity: 0; }
+        .glass-panel { backdrop-filter: blur(20px); border: 1px solid rgba(255, 255, 255, 0.3); }
+        .hover-glow:hover { box-shadow: 0 0 30px rgba(169, 46, 95, 0.15); }
+        .timeline-line { width: 1px; background: linear-gradient(to bottom, transparent, #520026, transparent); }
+        .crosshair-corner::before, .crosshair-corner::after { content: ''; position: absolute; width: 8px; height: 8px; border: 1px solid #520026; }
+        .crosshair-tl { top: -2px; left: -2px; border-right: 0; border-bottom: 0; }
+        .crosshair-tr { top: -2px; right: -2px; border-left: 0; border-bottom: 0; }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body-main selection:bg-primary-fixed selection:text-on-primary-fixed overflow-x-hidden">
+<!-- Top Navigation Shell -->
+<nav class="fixed top-0 w-full z-50 bg-surface-container/40 backdrop-blur-xl border-b border-outline-variant/20 shadow-[0_0_20px_rgba(169,46,95,0.1)] flex justify-between items-center px-margin-mobile md:px-margin-desktop h-20">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-primary text-2xl">api</span>
+<span class="font-label-mono-md text-label-mono-md tracking-widest text-primary uppercase">ENGINEER_V01</span>
+</div>
+<div class="hidden md:flex gap-12 font-label-mono-md text-label-mono-md">
+<a class="text-primary font-bold hover:text-primary-fixed-dim transition-colors duration-500" href="#projects">PROJECTS</a>
+<a class="text-on-surface-variant/70 hover:text-primary-fixed-dim transition-colors duration-500" href="#about">SYSTEMS</a>
+<a class="text-on-surface-variant/70 hover:text-primary-fixed-dim transition-colors duration-500" href="#experience">BIO</a>
+<a class="text-on-surface-variant/70 hover:text-primary-fixed-dim transition-colors duration-500" href="#contact">CONNECT</a>
+</div>
+<div class="flex items-center gap-base">
+<span class="material-symbols-outlined text-primary cursor-pointer active:scale-95 transition-all">menu</span>
+</div>
+</nav>
+<!-- Hero Section -->
+<header class="relative min-h-screen flex items-center pt-20 overflow-hidden">
+<!-- STITCH_SHADER_START:ANIMATION_7 class="absolute inset-0 w-full h-full z-0 opacity-40" -->
+<div class="absolute inset-0 w-full h-full z-0 opacity-40" style="display:block;">
+<canvas id="shader-canvas-ANIMATION_7" style="display:block;width:100%;height:100%"></canvas>
+<script>
+(function() {
+  const canvas = document.getElementById('shader-canvas-ANIMATION_7');
+
+  // Sync the WebGL drawing-buffer size with the CSS-driven layout size.
+  // This fires on initial layout and whenever the element is resized.
+  function syncSize() {
+    const w = canvas.clientWidth  || 1280;
+    const h = canvas.clientHeight || 720;
+    if (canvas.width !== w || canvas.height !== h) {
+      canvas.width  = w;
+      canvas.height = h;
+    }
+  }
+  if (typeof ResizeObserver !== 'undefined') {
+    new ResizeObserver(syncSize).observe(canvas);
+  }
+  syncSize();
+
+  const gl = canvas.getContext('webgl') || canvas.getContext('experimental-webgl');
+  if (!gl) return;
+  const vs = `attribute vec2 a_position;
+varying vec2 v_texCoord;
+void main() {
+  v_texCoord = a_position * 0.5 + 0.5;
+  gl_Position = vec4(a_position, 0.0, 1.0);
+}`;
+  const fs = `precision highp float;
+varying vec2 v_texCoord;
+uniform float u_time;
+uniform vec2 u_resolution;
+
+void main() {
+    vec2 uv = v_texCoord;
+    
+    // Create a slow-moving, elegant organic gradient field
+    // Using colors from the palette: Wine (#7A003C), Rose (#D96A98), Cream (#F8F3EE)
+    
+    vec3 color1 = vec3(0.478, 0.0, 0.235); // #7A003C
+    vec3 color2 = vec3(0.851, 0.416, 0.596); // #D96A98
+    vec3 color3 = vec3(0.973, 0.953, 0.933); // #F8F3EE
+    
+    float noise1 = sin(uv.x * 2.0 + u_time * 0.2) * 0.5 + 0.5;
+    float noise2 = cos(uv.y * 3.0 - u_time * 0.3) * 0.5 + 0.5;
+    
+    vec3 finalColor = mix(color3, color2, noise1 * 0.3);
+    finalColor = mix(finalColor, color1, noise2 * 0.15);
+    
+    // Add a very subtle "shimmer" effect
+    float shimmer = sin(uv.x * 10.0 + uv.y * 10.0 + u_time) * 0.02;
+    finalColor += shimmer;
+    
+    gl_FragColor = vec4(finalColor, 1.0);
+}`;
+  function cs(type, src) {
+    const s = gl.createShader(type);
+    gl.shaderSource(s, src);
+    gl.compileShader(s);
+    return s;
+  }
+  const prog = gl.createProgram();
+  gl.attachShader(prog, cs(gl.VERTEX_SHADER, vs));
+  gl.attachShader(prog, cs(gl.FRAGMENT_SHADER, fs));
+  gl.linkProgram(prog);
+  gl.useProgram(prog);
+  const buf = gl.createBuffer();
+  gl.bindBuffer(gl.ARRAY_BUFFER, buf);
+  gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1,-1, 1,-1, -1,1, 1,1]), gl.STATIC_DRAW);
+  const pos = gl.getAttribLocation(prog, 'a_position');
+  gl.enableVertexAttribArray(pos);
+  gl.vertexAttribPointer(pos, 2, gl.FLOAT, false, 0, 0);
+  const uTime = gl.getUniformLocation(prog, 'u_time');
+  const uRes = gl.getUniformLocation(prog, 'u_resolution');
+  const uMouse = gl.getUniformLocation(prog, 'u_mouse');
+
+  // u_mouse is in pixel coordinates matching u_resolution (ShaderToy convention).
+  // Shaders that need normalized coords should use: u_mouse / u_resolution.
+  let mouse = { x: canvas.width / 2, y: canvas.height / 2 };
+  window.addEventListener('mousemove', (event) => {
+    const rect = canvas.getBoundingClientRect();
+    if (rect.width && rect.height) {
+      const nx = (event.clientX - rect.left) / rect.width;
+      const ny = 1.0 - (event.clientY - rect.top) / rect.height;
+      mouse.x = nx * canvas.width;
+      mouse.y = ny * canvas.height;
+    }
+  });
+
+  function render(t) {
+    if (typeof ResizeObserver === 'undefined') syncSize();
+    gl.viewport(0, 0, canvas.width, canvas.height);
+    if (uTime) gl.uniform1f(uTime, t * 0.001);
+    if (uRes) gl.uniform2f(uRes, canvas.width, canvas.height);
+    if (uMouse) gl.uniform2f(uMouse, mouse.x, mouse.y);
+    gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
+    requestAnimationFrame(render);
+  }
+  render(0);
+})();
+</script>
+</div>
+<!-- STITCH_SHADER_END:ANIMATION_7 -->
+<div class="relative z-10 w-full max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop grid grid-cols-1 md:grid-cols-12 gap-gutter items-center">
+<div class="md:col-span-7 reveal" style="animation-delay: 0.2s;">
+<p class="font-label-mono-sm text-label-mono-sm text-primary mb-base uppercase tracking-widest">Core Architecture / V01</p>
+<h1 class="font-display-lg text-display-lg-mobile md:text-display-lg text-primary max-w-2xl leading-none italic md:not-italic">
+                    Architecting <br/> <span class="text-primary-fixed-dim">Next-Gen</span> <br/> Intelligence
+                </h1>
+<div class="mt-12 flex flex-wrap gap-gutter">
+<button class="bg-primary text-on-primary px-10 py-4 rounded-full font-label-mono-md tracking-wide hover:shadow-[0_0_20px_rgba(169,46,95,0.4)] transition-all active:scale-95">VIEW ARCHIVE</button>
+<button class="glass-panel text-primary px-10 py-4 rounded-full font-label-mono-md tracking-wide hover:bg-primary/5 transition-all">READ MANIFESTO</button>
+</div>
+</div>
+<div class="md:col-span-5 relative h-[500px] flex justify-center items-center reveal" style="animation-delay: 0.4s;">
+<!-- STITCH_THREEJS_START:ANIMATION_8 class="w-full h-full transform scale-125" -->
+<div class="w-full h-full transform scale-125" style="display:block;">
+<script src="https://ajax.googleapis.com/ajax/libs/threejs/r125/three.min.js"></script>
+<div id="threejs-container-ANIMATION_8" style="width:100%;height:100%"></div>
+<script>
+(function() {
+  const container = document.getElementById('threejs-container-ANIMATION_8');
+  const devicePixelRatio = window.devicePixelRatio || 1;
+  const width = container.clientWidth || window.innerWidth;
+const height = container.clientHeight || window.innerHeight;
+
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(75, width / height, 0.1, 1000);
+const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
+renderer.setSize(width, height);
+renderer.setPixelRatio(window.devicePixelRatio);
+container.appendChild(renderer.domElement);
+
+// Create an abstract "Couture Wireframe" - a rotating complex geometry
+// Combining a sphere with a floating ring to represent engineering precision
+const group = new THREE.Group();
+
+const sphereGeom = new THREE.IcosahedronGeometry(1.5, 2);
+const sphereMat = new THREE.MeshPhongMaterial({
+    color: 0x7A003C,
+    wireframe: true,
+    transparent: true,
+    opacity: 0.4
+});
+const sphere = new THREE.Mesh(sphereGeom, sphereMat);
+group.add(sphere);
+
+const ringGeom = new THREE.TorusGeometry(2, 0.02, 16, 100);
+const ringMat = new THREE.MeshPhongMaterial({ color: 0xD96A98 });
+const ring = new THREE.Mesh(ringGeom, ringMat);
+ring.rotation.x = Math.PI / 2;
+group.add(ring);
+
+scene.add(group);
+
+const light = new THREE.PointLight(0xffffff, 1, 100);
+light.position.set(5, 5, 5);
+scene.add(light);
+scene.add(new THREE.AmbientLight(0x404040));
+
+camera.position.z = 5;
+
+function animate() {
+    requestAnimationFrame(animate);
+    group.rotation.y += 0.005;
+    group.rotation.x += 0.002;
+    
+    // Subtle pulse
+    const scale = 1 + Math.sin(Date.now() * 0.001) * 0.05;
+    group.scale.set(scale, scale, scale);
+    
+    renderer.render(scene, camera);
+}
+
+window.addEventListener('resize', () => {
+    const w = container.clientWidth || window.innerWidth;
+    const h = container.clientHeight || window.innerHeight;
+    camera.aspect = w / h;
+    camera.updateProjectionMatrix();
+    renderer.setSize(w, h);
+});
+
+animate();
+})();
+</script>
+</div>
+<!-- STITCH_THREEJS_END:ANIMATION_8 -->
+<div class="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent pointer-events-none"></div>
+</div>
+</div>
+</header>
+<!-- Selected Works (Bento-ish Grid) -->
+<section class="py-32 relative bg-surface-container-low" id="projects">
+<div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop">
+<div class="flex flex-col md:flex-row justify-between items-baseline mb-20 gap-4 reveal">
+<h2 class="font-display-lg text-4xl md:text-5xl text-primary">Selected Works</h2>
+<span class="font-label-mono-sm text-on-surface-variant uppercase tracking-tighter">001 — 003 / PRODUCTION_RELEASE</span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-12 gap-gutter">
+<!-- Large Card -->
+<div class="md:col-span-8 group relative overflow-hidden h-[600px] glass-panel rounded-xl reveal hover-glow transition-all duration-700" style="animation-delay: 0.1s;">
+<div class="absolute inset-0 grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-1000">
+<div class="w-full h-full bg-cover bg-center" data-alt="A cinematic, high-fidelity UI mockup of a complex neural analytics dashboard. The interface is rendered with glassmorphism effects, glowing wine-colored data visualizations, and elegant serif typography. The lighting is low-key with soft magenta backlighting, evoking a premium tech-couture aesthetic in a minimalist light-mode environment." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDJtBeifsc_Y-wbdHy93tTqVSlRwjZDQPP602QQsMYnxSGqFwIjhSoKiL0rgbqamH_OWjm8Pf711FDuVhioLiJSrlBCluDSJPM_Vwu6xa9WW_qTp40X82ahhexudVFJ1LZjlzJ_Yq1ItTQrbw2zqEzTnGuCE1rfmdKfGLFQsHhKP1NFJenp47fELCKPOcKsTdr9FHWMELQzVoJ-H0E3TqoXrfvtD8ss1dfxY1n622ksTNy0_wI6ij7rLA')"></div>
+</div>
+<div class="absolute inset-0 bg-gradient-to-t from-primary/80 to-transparent opacity-60 group-hover:opacity-40 transition-opacity"></div>
+<div class="absolute bottom-0 left-0 p-12 text-white">
+<p class="font-label-mono-sm mb-2 opacity-80">AI / MACHINE LEARNING</p>
+<h3 class="font-headline-md text-4xl mb-6">Neural Analytics Engine</h3>
+<a class="inline-flex items-center gap-2 font-label-mono-md border-b border-white/40 pb-1 group-hover:gap-4 transition-all" href="#">EXPLORE ARCHITECTURE <span class="material-symbols-outlined text-sm">arrow_forward</span></a>
+</div>
+</div>
+<!-- Small Card -->
+<div class="md:col-span-4 group relative overflow-hidden h-[600px] glass-panel rounded-xl reveal hover-glow transition-all duration-700" style="animation-delay: 0.2s;">
+<div class="absolute inset-0 grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-1000">
+<div class="w-full h-full bg-cover bg-center" data-alt="An ethereal and artistic digital visual for a software project titled Synthetic Grace. It features organic, fluid glass-like structures reflecting deep wine and soft rose light. The composition is minimalist and editorial, with a sharp focus on textures and light refraction, perfectly aligning with a luxury technology brand identity." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCDSzWuYO3QNfB9GkvETxqrL4sifsao9mU772ADjfvyIHNXyMZyTfogo3PKgkFMOLVUSRLC4hoVI-ayXNspPYY6zBEv1KP-eIIm2ZXoUVLRoIX7ELrTqwAVkL7uSjskhAwJSitQAG2kH9qQuBwSx-8qY0JEiSIqrCSQ8HrvlsU6P45D5WWSlVApMY5LsEQ2pUX3o88tWRTpVdneW1hNTxKXYnvzX-0AcwaZNuosFC7Y1yFALd3Q7mzNfw')"></div>
+</div>
+<div class="absolute inset-0 bg-gradient-to-t from-primary/80 to-transparent opacity-60"></div>
+<div class="absolute bottom-0 left-0 p-12 text-white">
+<p class="font-label-mono-sm mb-2 opacity-80">CREATIVE CODING</p>
+<h3 class="font-headline-md text-3xl mb-6">Nightfall // Synthetic Grace</h3>
+<span class="material-symbols-outlined text-3xl">terminal</span>
+</div>
+</div>
+<!-- Mid Card -->
+<div class="md:col-span-12 group relative overflow-hidden h-[450px] glass-panel rounded-xl reveal hover-glow transition-all duration-700" style="animation-delay: 0.3s;">
+<div class="absolute inset-0 grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-1000">
+<div class="w-full h-full bg-cover bg-center" data-alt="A highly detailed 3D technical illustration of an LLM Orchestrator system. The scene shows interconnected nodes and shimmering data streams within a pristine, white architectural space. The color palette is dominated by sophisticated creams and intense wine accents, presented with a crisp, Apple-esque clarity and premium professional lighting." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuB5l_CCl0GjjRN513XPnxWykGhvmklykoRwVgKkMJOcaAE2MYhyemcCta5ECBhS1GtcpK1YC7dGgktonq--GXHXoZ8sDEfjEW20YT9-jBtLlBgqo4VI8Y8cTZM115-eTFq5njlOj3OJQOeO_Zo5-qGEp3x3_MhXQSXt5D1a3FhZw7vQPBrzTcVbwuHYbBGDmp127M72SYidu4tBEjkTgFOy874hZ_2DWpkEVTXcH_Vi05uoSrrmKHgVew')"></div>
+</div>
+<div class="absolute inset-0 bg-gradient-to-r from-primary/90 via-primary/40 to-transparent"></div>
+<div class="absolute inset-y-0 left-0 p-12 flex flex-col justify-center max-w-xl text-white">
+<p class="font-label-mono-sm mb-2 opacity-80">DISTRIBUTED SYSTEMS</p>
+<h3 class="font-headline-md text-4xl mb-4">LLM Orchestrator</h3>
+<p class="font-body-main text-white/70 mb-8">A massive-scale coordination layer for multi-agent autonomous environments.</p>
+<button class="w-fit bg-white text-primary px-8 py-3 rounded-full font-label-mono-md hover:invert transition-all">SYSTEM DOCS</button>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- About Section: Prazer, Dua Layout -->
+<section class="py-32 bg-background relative overflow-hidden" id="about">
+<div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop">
+<div class="grid grid-cols-1 md:grid-cols-12 gap-16 items-start">
+<div class="md:col-span-5 reveal">
+<div class="relative w-full aspect-[4/5] rounded-xl overflow-hidden glass-panel border-4 border-white/50 shadow-2xl">
+<img class="w-full h-full object-cover" data-alt="A professional, editorial-style portrait of a senior software engineer in a high-end minimalist studio setting. The lighting is soft and directional, highlighting facial features with a premium aesthetic. The background is a clean cream wall with subtle wine-colored ambient light leaks. The engineer looks confident and visionary, wearing minimalist, high-fashion tech attire." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBAMcPrQAgy4McJZLlXM7qRI8s8rll6oeLtO7_NRjuK_PuL-MwDAIpR5C8TQkGCHgNUFKqmWT1Z55igI4H-txAhR3fHuHKdYJ1Tr9ZIWHccxv3L8JioWrzCkbYVEM4hXAuhuPOtgtkDwN0Ufe_AT39m9jUIYpYpANp_icWJnlpmbCTKR5gKiF6_hdVLF01mo4gou51dhqTLXJR7XgaTpoOvgVzJAXpxpNjZSsHfrFTWtqaPcqqLehreKg"/>
+<div class="absolute bottom-6 left-6 right-6 p-6 glass-panel rounded-lg">
+<p class="font-label-mono-md text-primary">NAME_SYSTEM: DUA_V2.0</p>
+<p class="font-label-mono-sm text-on-surface-variant opacity-70">STATUS: ACTIVE_RESEARCHER</p>
+</div>
+</div>
+</div>
+<div class="md:col-span-7 space-y-12 reveal" style="animation-delay: 0.2s;">
+<div>
+<h2 class="font-display-lg text-5xl md:text-6xl text-primary mb-8 italic">Prazer, Dua!</h2>
+<p class="font-body-main text-2xl text-on-surface-variant leading-relaxed">
+                            I bridge the gap between high-fashion editorial design and hardcore engineering. With a focus on <span class="text-primary font-bold">Generative AI</span> and <span class="text-primary font-bold">Architecture</span>, I build systems that don't just work—they perform.
+                        </p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-gutter">
+<div class="p-8 glass-panel rounded-xl relative overflow-hidden group hover:bg-surface-container transition-colors">
+<div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-30 transition-opacity">
+<span class="material-symbols-outlined text-4xl">school</span>
+</div>
+<h4 class="font-label-mono-md text-primary mb-2 uppercase">Education</h4>
+<p class="font-headline-md text-xl">FIAP — Computer Engineering</p>
+<p class="font-label-mono-sm text-on-surface-variant mt-2">SPECIALIZATION: AI &amp; NEURAL NETS</p>
+</div>
+<div class="p-8 glass-panel rounded-xl relative overflow-hidden group hover:bg-surface-container transition-colors">
+<div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-30 transition-opacity">
+<span class="material-symbols-outlined text-4xl">location_on</span>
+</div>
+<h4 class="font-label-mono-md text-primary mb-2 uppercase">Location</h4>
+<p class="font-headline-md text-xl">Global / Remote</p>
+<p class="font-label-mono-sm text-on-surface-variant mt-2">CURRENT_LAT: -23.5505, -46.6333</p>
+</div>
+</div>
+<div class="p-8 glass-panel rounded-xl border-l-4 border-primary">
+<h4 class="font-label-mono-md text-primary mb-6 uppercase">Primary Tech Stack</h4>
+<div class="flex flex-wrap gap-3">
+<span class="px-4 py-2 bg-primary/5 border border-primary/20 text-primary font-label-mono-sm rounded hover:bg-primary hover:text-white transition-all cursor-default">PYTHON_CORE</span>
+<span class="px-4 py-2 bg-primary/5 border border-primary/20 text-primary font-label-mono-sm rounded hover:bg-primary hover:text-white transition-all cursor-default">PYTORCH_LABS</span>
+<span class="px-4 py-2 bg-primary/5 border border-primary/20 text-primary font-label-mono-sm rounded hover:bg-primary hover:text-white transition-all cursor-default">TYPESCRIPT</span>
+<span class="px-4 py-2 bg-primary/5 border border-primary/20 text-primary font-label-mono-sm rounded hover:bg-primary hover:text-white transition-all cursor-default">NEXT.JS_14</span>
+<span class="px-4 py-2 bg-primary/5 border border-primary/20 text-primary font-label-mono-sm rounded hover:bg-primary hover:text-white transition-all cursor-default">RUST_LANG</span>
+<span class="px-4 py-2 bg-primary/5 border border-primary/20 text-primary font-label-mono-sm rounded hover:bg-primary hover:text-white transition-all cursor-default">CUDA_OPS</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Experience Timeline -->
+<section class="py-32 bg-surface-container-low relative" id="experience">
+<div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop">
+<h2 class="font-display-lg text-4xl md:text-5xl text-primary mb-24 reveal">Professional Journey</h2>
+<div class="relative ml-4 md:ml-0">
+<div class="absolute left-0 md:left-1/2 top-0 bottom-0 timeline-line opacity-30 transform md:-translate-x-1/2"></div>
+<div class="space-y-24">
+<!-- Entry 1 -->
+<div class="relative flex flex-col md:flex-row items-center reveal" style="animation-delay: 0.1s;">
+<div class="md:w-1/2 md:pr-16 md:text-right mb-8 md:mb-0">
+<span class="font-label-mono-md text-primary">2023 — PRESENT</span>
+<h3 class="font-headline-md text-3xl mt-2">Lead AI Architect</h3>
+<p class="font-body-main text-on-surface-variant mt-4">Directing the deployment of LLM-native applications for Fortune 500 tech firms.</p>
+</div>
+<div class="absolute left-0 md:left-1/2 w-4 h-4 bg-primary rounded-full transform -translate-x-1/2 shadow-[0_0_15px_#a92e5f]"></div>
+<div class="md:w-1/2 md:pl-16">
+<div class="p-6 glass-panel rounded-lg hover:border-primary/50 transition-colors">
+<p class="font-label-mono-sm text-primary uppercase">Achievements</p>
+<ul class="mt-4 space-y-2 font-label-mono-sm text-on-surface-variant">
+<li>&gt; REDUCED LATENCY BY 45% ACROSS GLOBAL CLUSTERS</li>
+<li>&gt; SCALED MULTI-MODAL PIPELINES TO 10M+ REQUESTS/DAY</li>
+</ul>
+</div>
+</div>
+</div>
+<!-- Entry 2 -->
+<div class="relative flex flex-col md:flex-row-reverse items-center reveal" style="animation-delay: 0.2s;">
+<div class="md:w-1/2 md:pl-16 mb-8 md:mb-0">
+<span class="font-label-mono-md text-primary">2021 — 2023</span>
+<h3 class="font-headline-md text-3xl mt-2">Senior Systems Engineer</h3>
+<p class="font-body-main text-on-surface-variant mt-4">Focused on low-latency data processing and high-availability cloud infra.</p>
+</div>
+<div class="absolute left-0 md:left-1/2 w-4 h-4 bg-primary rounded-full transform -translate-x-1/2 shadow-[0_0_15px_#a92e5f]"></div>
+<div class="md:w-1/2 md:pr-16 md:text-right">
+<div class="p-6 glass-panel rounded-lg hover:border-primary/50 transition-colors">
+<p class="font-label-mono-sm text-primary uppercase">Core Focus</p>
+<ul class="mt-4 space-y-2 font-label-mono-sm text-on-surface-variant">
+<li>&gt; DISTRIBUTED COMPUTING ARCHITECTURES</li>
+<li>&gt; KUBERNETES ORCHESTRATION AT SCALE</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Professional Gallery -->
+<section class="py-32 bg-background">
+<div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop">
+<div class="grid grid-cols-2 md:grid-cols-4 gap-4 reveal">
+<div class="aspect-square relative overflow-hidden rounded-lg group">
+<img class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700" data-alt="A detailed, macro close-up of a high-end mechanical keyboard and a clean desk setup. The aesthetic is monochromatic cream with soft wine-colored desk lighting. The focus is sharp on the technical textures, conveying a sense of precision and professional craftsmanship in a premium studio environment." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCCuoScL6nwpqrqJHDPxMv8c9SXQLJE-Q1a3eezHmhzYKRDFMjxFatjqbYFI-nhV4IlcfqOWhF2rV1Pb8e79eKIsHHr85aN6OH8iCnsNdL8s_6TqhUWzk9coO4yGtt7l6NNo-1y8-NU70qVjzBYvtHRFFWbMhF7VxaIx8mwKxlYrhEe9dBWr8b1W9QKpZzn3PyzsS3KYc6Em8uUbcIQq0q32twZg1DY0O_pdRiZoqm8sW8XUi95gDZX1w"/>
+</div>
+<div class="aspect-square relative overflow-hidden rounded-lg group translate-y-8">
+<img class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700" data-alt="An abstract architectural shot of a modern, glass-walled office space at dusk. The building is illuminated from within with warm cream and rose lights, reflecting off the clean metallic surfaces. The composition is geometric and minimalist, representing the intersection of software architecture and physical space." src="https://lh3.googleusercontent.com/aida-public/AB6AXuABg-3CRWK3wmd2xL7_KTcGIQykLK7GwD2iU5XA1lxq6pPa5Bhqg6JbFIrUrugwGq0lXD7ldNY3gKPMStPs_rXi2dPFzbI143iRO3AFuZvv3KncHSMz1BaX1_XBju0rTkgwgXZCekuyOsUvQ0X0F8XZnINBtA5GILEjzGsR3NYimnBxWXGblK4K0XgRKCAgEkuAKVPA9Zq03F1bu1Gin94JQcIQEN9janRXaV9-vnyZfxuiMhA8-unLhQ"/>
+</div>
+<div class="aspect-square relative overflow-hidden rounded-lg group">
+<img class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700" data-alt="A minimalist tech setup with a focus on a single high-resolution monitor displaying code in a sleek IDE. The color theme is wine and charcoal. The room is softly lit, creating an atmosphere of deep focus and intellectual rigor, consistent with a high-end tech-couture studio style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBwz9dlcMNOLkIYQjCZ9x5WG_tJG6y8Z79GilTdnj1sEm1L8NtEVKJabDtB59c2L8UFYw3OYJ4icvqSluudoUjV-vQOsndbDElFVQj4BUwTs6Rl6aBEzKhOdCvt7oZ9YtcBJOBovHqrUHVls-1cjenvFGZ4MhhmWE0_icWx-rvqE0esrhmMSS3HNTb90qZ0RXjiGmWxOX3ofcLt2b8E2q1Dc9iFqhFefufyZC9JYltdaX3MudHeBJOB_A"/>
+</div>
+<div class="aspect-square relative overflow-hidden rounded-lg group translate-y-8">
+<img class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700" data-alt="A sharp, artistic close-up of a high-tech server rack with glowing magenta status lights. The image is captured with a shallow depth of field, emphasizing the intricate wiring and engineering detail. The overall mood is futuristic, clean, and professional, utilizing a cream and wine palette." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAldPhXAhV8QZQRf2Xt0Dr4wB3Jmt6CG_k21Z8TWJo6e1122YCnENoW3jwtWm1aRbQMPiWGhei6ZIaF1KlKC9Q9xy9joTprsjDVUjCQfdvWUX6Xv9g7VSNOE9R50X_kTj9TwYfOJNRFr_TgDvuddfPlakRcQc2DEIH52wYSYDynlYdKX6CzIE4QpkIJqbSYdU-kZEYbS-XyjW1ILeGjv3xL_QTD9OPeChF59eooUzBo-boUzMvCQuLEBA"/>
+</div>
+</div>
+</div>
+</section>
+<!-- Contact Section -->
+<section class="py-32 relative bg-surface-container" id="contact">
+<div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop reveal">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+<div>
+<h2 class="font-display-lg text-5xl text-primary mb-8">Initiate <br/> Connection.</h2>
+<p class="font-body-main text-on-surface-variant max-w-md mb-12">
+                        I am currently available for high-impact collaborations and selective architectural consultations. Let's build the future together.
+                    </p>
+<div class="space-y-6">
+<div class="flex items-center gap-4">
+<span class="w-12 h-12 flex items-center justify-center rounded-full bg-primary/10 text-primary material-symbols-outlined">mail</span>
+<div>
+<p class="font-label-mono-sm text-on-surface-variant/60 uppercase">Direct Email</p>
+<p class="font-headline-md text-xl">HELLO@DUA_SYSTEMS.IO</p>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<span class="w-12 h-12 flex items-center justify-center rounded-full bg-primary/10 text-primary material-symbols-outlined">language</span>
+<div>
+<p class="font-label-mono-sm text-on-surface-variant/60 uppercase">Availability</p>
+<p class="font-headline-md text-xl">UTC-03:00 / GLOBAL</p>
+</div>
+</div>
+</div>
+</div>
+<div class="glass-panel p-10 rounded-2xl relative crosshair-corner shadow-2xl">
+<div class="crosshair-tl crosshair-corner"></div>
+<div class="crosshair-tr crosshair-corner"></div>
+<form class="space-y-8">
+<div>
+<label class="block font-label-mono-sm text-primary mb-2 uppercase">Identified Name</label>
+<input class="w-full bg-transparent border-b border-primary/30 py-3 focus:outline-none focus:border-primary transition-all font-label-mono-md" placeholder="GUEST_USER_01" type="text"/>
+</div>
+<div>
+<label class="block font-label-mono-sm text-primary mb-2 uppercase">Subject Channel</label>
+<select class="w-full bg-transparent border-b border-primary/30 py-3 focus:outline-none focus:border-primary transition-all font-label-mono-md appearance-none cursor-pointer">
+<option>PROJECT_INQUIRY</option>
+<option>SYSTEM_CONSULTATION</option>
+<option>OTHER_CONNECTION</option>
+</select>
+</div>
+<div>
+<label class="block font-label-mono-sm text-primary mb-2 uppercase">Data Input</label>
+<textarea class="w-full bg-transparent border-b border-primary/30 py-3 focus:outline-none focus:border-primary transition-all font-label-mono-md resize-none" placeholder="BRIEF_YOUR_INTENT..." rows="4"></textarea>
+</div>
+<button class="w-full bg-primary text-on-primary py-5 rounded-lg font-label-mono-md tracking-widest hover:bg-primary-container hover:text-on-primary-container transition-all flex justify-center items-center gap-3">
+                            EXECUTE_SEND <span class="material-symbols-outlined">send</span>
+</button>
+</form>
+</div>
+</div>
+</div>
+</section>
+<!-- Footer Shell -->
+<footer class="bg-surface border-t border-outline-variant/10 py-gutter">
+<div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop flex flex-col md:flex-row justify-between items-center gap-base">
+<div class="flex items-center gap-4">
+<span class="text-primary font-bold font-label-mono-md">ENGINEER_V01</span>
+<span class="text-on-surface-variant font-label-mono-sm">© 2024 TECH-COUTURE SYSTEMS. ALL RIGHTS RESERVED.</span>
+</div>
+<div class="flex gap-8 font-label-mono-sm">
+<a class="text-on-surface-variant hover:text-primary transition-opacity" href="#">GITHUB</a>
+<a class="text-on-surface-variant hover:text-primary transition-opacity" href="#">LINKEDIN</a>
+<a class="text-on-surface-variant hover:text-primary transition-opacity" href="#">DOCS</a>
+</div>
+</div>
+</footer>
+<script>
+        // Reveal Animations on Scroll
+        const observerOptions = {
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = "1";
+                    entry.target.classList.add('reveal');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+        // Smooth Parallax for blobs (CSS only approach would be better, but subtle JS adds polish)
+        window.addEventListener('mousemove', (e) => {
+            const x = (e.clientX / window.innerWidth) - 0.5;
+            const y = (e.clientY / window.innerHeight) - 0.5;
+            const heroScene = document.querySelector('threejs-scene');
+            if (heroScene) {
+                heroScene.style.transform = `scale(1.25) translate(${x * 20}px, ${y * 20}px)`;
+            }
+        });
+    </script>
+</body></html>

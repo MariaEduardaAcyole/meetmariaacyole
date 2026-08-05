@@ -1,0 +1,713 @@
+<!doctype html>
+
+<html lang="pt-BR">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>NIMBOS | Case Study</title>
+
+        <link
+            href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap"
+            rel="stylesheet" />
+
+        <script src="https://cdn.tailwindcss.com"></script>
+
+        <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              background: "#fff8f8",
+              surface: "#fff0f2",
+              primary: "#520026",
+              accent: "#7A003C",
+              rose: "#D96A98",
+              text: "#24191b",
+              muted: "#605e5a",
+              border: "#dcbfc5",
+            },
+            fontFamily: {
+              display: ["Playfair Display", "serif"],
+              mono: ["JetBrains Mono", "monospace"],
+            },
+          },
+        },
+      };
+    </script>
+
+        <style>
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        background: #fff8f8;
+        color: #24191b;
+        overflow-x: hidden;
+      }
+
+      .glass {
+        backdrop-filter: blur(20px);
+        background: rgba(255, 255, 255, 0.55);
+        border: 1px solid rgba(122, 0, 60, 0.12);
+      }
+
+      .hero-bg {
+        background:
+          radial-gradient(
+            circle at top right,
+            rgba(217, 106, 152, 0.18),
+            transparent 40%
+          ),
+          radial-gradient(
+            circle at bottom left,
+            rgba(122, 0, 60, 0.12),
+            transparent 45%
+          ),
+          linear-gradient(180deg, #fff8f8, #fff0f2);
+      }
+
+      .reveal {
+        opacity: 0;
+        transform: translateY(28px);
+        animation: fadeUp 0.9s ease forwards;
+      }
+
+      @keyframes fadeUp {
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .section-line {
+        width: 72px;
+        height: 1px;
+        background: #7a003c;
+        margin: 0 auto 20px;
+      }
+    </style>
+    </head>
+
+    <body>
+        <!-- NAV -->
+
+        <nav class="fixed top-0 left-0 right-0 z-50 glass">
+            <div
+                class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+                <div
+                    class="font-mono text-sm tracking-[0.25em] uppercase text-primary">
+                    <a href="./index.html">
+                        MARIA_ACYOLE // CASE_STUDY
+                    </a>
+                </div>
+
+                <div
+                    class="hidden md:flex gap-8 font-mono text-xs uppercase tracking-[0.2em] text-muted">
+                    <a href="#overview">Visão Geral</a>
+                    <a href="#solucao">Solução</a>
+                    <a href="#funcioanalidades">Funcionalidades</a>
+                    <a href="#tecnologiaseskills">Tecnologias</a>
+                    <a href="#resultado">Resultado</a>
+
+                </div>
+            </div>
+
+        </nav>
+
+        <!-- HERO -->
+        <header id="overview"
+            class="hero-bg min-h-screen flex items-center pt-24">
+
+            <div
+                class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-16 items-center">
+
+                <div>
+
+                    <p
+                        class="font-mono uppercase tracking-[0.3em] text-primary text-xs mb-4">
+                        Projeto acadêmico • FIAP
+                    </p>
+
+                    <h1
+                        class="font-display text-6xl md:text-7xl leading-none text-primary">
+                        NIMBOS
+                    </h1>
+
+                    <p class="mt-8 text-xl leading-relaxed text-muted max-w-xl">
+                        Sistema Edge IoT desenvolvido para monitoramento
+                        inteligente utilizando sensores embarcados, coleta de
+                        dados em tempo real e comunicação via protocolo MQTT.
+                    </p>
+
+                    <div class="mt-10 flex flex-wrap gap-4">
+
+                        <a
+                            href="https://mariaeduardaacyole.github.io/NIMBOS---GS/"
+                            class="px-7 py-3 rounded-full bg-primary text-white font-mono text-xs uppercase tracking-[0.2em]">
+                            GitHub
+                        </a>
+
+                        <a href="index.html"
+                            class="px-7 py-3 rounded-full border border-primary text-primary font-mono text-xs uppercase tracking-[0.2em]">
+                            Voltar ao Portfólio
+                        </a>
+
+                    </div>
+
+                </div>
+
+                <div>
+
+                    <div class="glass rounded-[28px] p-4 shadow-2xl">
+
+                        <img
+                            src="img/nimbos.gif"
+                            alt="Projeto NIMBOS IoT"
+                            class="w-full rounded-[20px] object-cover">
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </header>
+
+        <!-- RESUMO -->
+
+        <section id="solucao" class="py-12">
+
+            <div class="max-w-6xl mx-auto px-6"> <div
+                    class="grid grid-cols-2 md:grid-cols-4 gap-6">
+
+                    <div class="glass rounded-2xl p-6 text-center">
+                        <p class="font-display text-3xl text-primary">2025</p>
+                        <p
+                            class="font-mono text-xs uppercase tracking-[0.2em] text-muted mt-2">Ano</p>
+                    </div>
+
+                    <div class="glass rounded-2xl p-6 text-center">
+                        <p
+                            class="font-display text-3xl text-primary">Plataforma</p>
+                        <p
+                            class="font-mono text-xs uppercase tracking-[0.2em] text-muted mt-2">Categoria</p>
+                    </div>
+
+                    <div class="glass rounded-2xl p-6 text-center">
+                        <p class="font-display text-3xl text-primary">Bueiros
+                            inteligentes</p>
+                        <p
+                            class="font-mono text-xs uppercase tracking-[0.2em] text-muted mt-2">Desastres
+                            Naturais</p>
+                    </div>
+
+                    <div class="glass rounded-2xl p-6 text-center">
+                        <p
+                            class="font-display text-3xl text-primary">Analytics</p>
+                        <p
+                            class="font-mono text-xs uppercase tracking-[0.2em] text-muted mt-2">Escopo</p>
+                    </div>
+
+                </div>
+
+            </div> </section>
+
+        <!-- GRANDE CARD DA SOLUÇÃO -->
+
+        <section class="py-10"> <div class="max-w-6xl mx-auto px-6">
+
+                <div class="glass rounded-[32px] p-10 md:p-12">
+                    <div class="flex items-center gap-3 mb-6">
+                        <div
+                            class="w-12 h-12 rounded-full bg-primary text-white flex items-center justify-center text-xl">
+                            🔐
+                        </div>
+                        <h2 class="font-display text-4xl text-primary">A
+                            Solução</h2>
+                    </div>
+
+                    <p class="text-lg leading-relaxed text-muted mb-10">
+
+                        O NIMBOS é uma solução baseada em Edge Computing e
+                        Internet das Coisas,
+                        desenvolvida para capturar informações do ambiente
+                        através de sensores
+                        conectados. O sistema realiza aquisição de dados
+                        físicos, processamento
+                        local e transmissão utilizando protocolo MQTT,
+                        permitindo monitoramento
+                        em tempo real e integração com aplicações inteligentes.
+
+                    </p>
+
+                    <div class="grid md:grid-cols-3 gap-8">
+
+                        <div>
+                            <h3
+                                class="font-mono uppercase text-xs tracking-[0.2em] text-primary mb-4">
+                                Objetivo
+                            </h3>
+
+                            <p class="text-muted">
+                                Criar um sistema IoT capaz de coletar dados
+                                utilizando sensores embarcados,
+                                promovendo monitoramento inteligente e
+                                comunicação eficiente entre dispositivos para
+                                previnir enchentes causadas por bueiros
+                                entupidos.
+                            </p>
+                        </div>
+
+                        <div>
+                            <h3
+                                class="font-mono uppercase text-xs tracking-[0.2em] text-primary mb-4">
+                                Aplicação-alvo
+                            </h3>
+                            <p class="text-muted">
+                                Soluções inteligentes envolvendo automação,
+                                monitoramento ambiental,
+                                gestão de recursos e aplicações baseadas em
+                                Internet das Coisas. </p>
+                        </div>
+
+                        <div>
+                            <h3
+                                class="font-mono uppercase text-xs tracking-[0.2em] text-primary mb-4">
+                                Resultado
+                            </h3>
+                            <p class="text-muted">
+                                Protótipo funcional integrando hardware,
+                                sensores, comunicação MQTT
+                                e coleta de dados em tempo real. </p>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div> </section>
+
+        <!-- FUNCIONALIDADES -->
+
+        <section id="funcionalidades" class="py-10 bg-[#fff3f5]">
+
+            <div class="max-w-6xl mx-auto px-6">
+
+                <h2
+                    class="font-display text-5xl text-primary text-center mb-12">
+                    Funcionalidades
+                </h2>
+
+                <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+
+                    <!-- SENSORIAMENTO -->
+
+                    <div class="glass rounded-3xl p-8 text-center">
+
+                        <div class="text-4xl mb-4">
+                            🌱
+                        </div>
+
+                        <h3 class="font-display text-2xl text-primary mb-2">
+                            Coleta de Dados
+                        </h3>
+
+                        <p class="text-muted">
+                            Monitoramento de informações físicas através de
+                            sensores conectados,
+                            permitindo captura de peso, fluxo e informações do
+                            ambiente em tempo real.
+                        </p>
+
+                    </div>
+
+                    <!-- PROCESSAMENTO -->
+
+                    <div class="glass rounded-3xl p-8 text-center">
+
+                        <div class="text-4xl mb-4">
+                            ⚙️
+                        </div>
+
+                        <h3 class="font-display text-2xl text-primary mb-2">
+                            Processamento Edge
+                        </h3>
+
+                        <p class="text-muted">
+                            Sensor de vazão para medir a quantidade de água
+                            passando e o sensor de peso para entender o quanto o
+                            bueiro pode ficar entupido em um futuro.
+                        </p>
+
+                    </div>
+
+                    <!-- COMUNICAÇÃO -->
+
+                    <div class="glass rounded-3xl p-8 text-center">
+
+                        <div class="text-4xl mb-4">
+                            📡
+                        </div>
+
+                        <h3 class="font-display text-2xl text-primary mb-2">
+                            Comunicação IoT
+                        </h3>
+
+                        <p class="text-muted">
+                            Transmissão dos dados utilizando protocolo MQTT
+                            através do ESP8266
+                            integrado ao broker HiveMQ.
+                        </p>
+
+                    </div>
+
+                    <div class="glass rounded-3xl p-8 text-center">
+
+                        <div class="text-4xl mb-4">
+                            ⚖️
+                        </div>
+
+                        <h3 class="font-display text-2xl text-primary mb-2">
+                            Medição de Carga
+                        </h3>
+
+                        <p class="text-muted">
+                            Utilização de célula de carga com módulo HX711 para
+                            aquisição precisa
+                            de dados relacionados à força e peso.
+                        </p>
+
+                    </div>
+                </div>
+
+                <!-- SEGUNDA LINHA -->
+
+                <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mt-6">
+
+
+                    <!-- FLUXO -->
+
+                    <div class="glass rounded-3xl p-8 text-center">
+
+                        <div class="text-4xl mb-4">
+                            💧
+                        </div>
+
+                        <h3 class="font-display text-2xl text-primary mb-2">
+                            Monitoramento de Fluxo
+                        </h3>
+
+                        <p class="text-muted">
+                            Sensor de fluxo responsável pela coleta de
+                            informações sobre passagem
+                            e consumo de líquidos.
+                        </p>
+
+                    </div>
+
+                    <!-- SIMULAÇÃO -->
+
+                    <div class="glass rounded-3xl p-8 text-center">
+
+                        <div class="text-4xl mb-4">
+                            🧪
+                        </div>
+
+                        <h3 class="font-display text-2xl text-primary mb-2">
+                            Prototipação Virtual
+                        </h3>
+
+                        <p class="text-muted">
+                            Desenvolvimento e validação do circuito eletrônico
+                            utilizando ambiente
+                            de simulação TinkerCad.
+                        </p>
+
+                    </div>
+
+                    <!-- INTEGRAÇÃO -->
+
+                    <div class="glass rounded-3xl p-8 text-center">
+
+                        <div class="text-4xl mb-4">
+                            🔗
+                        </div>
+
+                        <h3 class="font-display text-2xl text-primary mb-2">
+                            Integração Hardware
+                        </h3>
+
+                        <p class="text-muted">
+                            Conexão entre sensores, microcontroladores e
+                            serviços IoT formando
+                            uma solução embarcada completa.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- TECNOLOGIAS E SKILLS -->
+
+        <section id="tecnologiaseskills" class="py-10"> <div
+                class="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-10">
+
+                <!-- Tecnologias -->
+                <div class="glass rounded-[28px] p-8">
+                    <h2 class="font-display text-4xl text-primary mb-8">
+                        Tecnologias Utilizadas
+                    </h2>
+
+                    <div class="grid grid-cols-2 gap-4">
+
+                        <div
+                            class="border border-border rounded-2xl p-4 flex items-center gap-3">
+                            <span class="text-2xl">
+                                🔧</span>
+                            <div>
+                                <p class="font-semibold text-primary">Arduino
+                                    Uno</p>
+                            </div>
+                            <p class="text-sm text-muted">
+                                Microcontrolador principal
+                            </p>
+
+                        </div>
+
+                        <div
+                            class="border border-border rounded-2xl p-4 flex items-center gap-3">
+                            <span class="text-2xl">
+                                📡</span>
+                            <div>
+                                <p
+                                    class="font-semibold text-primary">ESP8266</p>
+                                <p class="text-sm text-muted">Comunicação Wi-Fi
+                                </p>
+                            </div>
+                        </div>
+
+                        <div
+                            class="border border-border rounded-2xl p-4 flex items-center gap-3">
+                            <span class="text-2xl">⚖️</span>
+                            <div>
+                                <p class="font-semibold text-primary">HX711 +
+                                    Load Cell</p>
+                                <p class="text-sm text-muted">HX711 + Load Cell
+                                </p>
+                            </div>
+                        </div>
+
+                        <div
+                            class="border border-border rounded-2xl p-4 flex items-center gap-3">
+                            <span class="text-2xl">
+                                💧</span>
+                            <div>
+                                <p class="font-semibold text-primary">Sensor de
+                                    Fluxo
+                                </p>
+                                <p class="text-sm text-muted">Medição de
+                                    vazão</p>
+                            </div>
+                        </div>
+
+                        <div
+                            class="border border-border rounded-2xl p-4 flex items-center gap-3">
+
+                            <div class="text-2xl">
+                                🔄
+                            </div>
+
+                            <div>
+
+                                <p class="font-semibold text-primary">
+                                    MQTT HiveMQ
+                                </p>
+
+                                <p class="text-sm text-muted">
+                                    Comunicação entre dispositivos
+                                </p>
+
+                            </div>
+
+                        </div>
+
+                        <!-- Wokwi -->
+
+                        <div
+                            class="border border-border rounded-2xl p-4 flex items-center gap-3">
+
+                            <div class="text-2xl">
+                                🧪
+                            </div>
+
+                            <div>
+
+                                <p class="font-semibold text-primary">
+                                    TinkerCad
+                                </p>
+
+                                <p class="text-sm text-muted">
+                                    Simulação de circuitos IoT
+                                </p>
+
+                            </div>
+
+                        </div>
+
+                        <!-- C++ -->
+
+                        <div
+                            class="border border-border rounded-2xl p-4 flex items-center gap-3">
+
+                            <div class="text-2xl">
+                                💻
+                            </div>
+
+                            <div>
+
+                                <p class="font-semibold text-primary">
+                                    C/C++ Arduino
+                                </p>
+
+                                <p class="text-sm text-muted">
+                                    Programação embarcada
+                                </p>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- RESULTADO -->
+
+                <!-- RESULTADO -->
+
+                <section id="resultado" class="py-10 bg-[#fff3f5]">
+
+                    <div class="max-w-6xl mx-auto px-6">
+
+                        <div
+                            class="glass rounded-[32px] p-10 md:p-12 text-center">
+
+                            <h2 class="font-display text-5xl text-primary mb-6">
+                                Resultado do Projeto
+                            </h2>
+
+                            <p
+                                class="text-lg text-muted max-w-3xl mx-auto mb-10">
+
+                                O NIMBOS resultou no desenvolvimento de um
+                                protótipo IoT funcional,
+                                integrando sensores, microcontroladores e
+                                comunicação em nuvem para
+                                monitoramento inteligente de bueiros. O projeto
+                                proporcionou experiência
+                                prática em sistemas embarcados, Edge Computing,
+                                protocolos de comunicação
+                                e integração entre hardware e software para
+                                prevenção de desastres naturais.
+
+                            </p>
+
+                            <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+
+                                <div
+                                    class="border border-border rounded-2xl p-6">
+                                    <p
+                                        class="font-display text-3xl text-primary">
+                                        2
+                                    </p>
+                                    <p
+                                        class="font-mono text-xs uppercase tracking-[0.2em] text-muted mt-2">
+                                        Sensores Integrados
+                                    </p>
+
+                                </div>
+
+                                <div
+                                    class="border border-border rounded-2xl p-6">
+
+                                    <p
+                                        class="font-display text-3xl text-primary">
+                                        MQTT
+                                    </p>
+
+                                    <p
+                                        class="font-mono text-xs uppercase tracking-[0.2em] text-muted mt-2">
+                                        Comunicação IoT
+                                    </p>
+
+                                </div>
+
+                                <div
+                                    class="border border-border rounded-2xl p-6">
+
+                                    <p
+                                        class="font-display text-3xl text-primary">
+                                        Real Time
+                                    </p>
+
+                                    <p
+                                        class="font-mono text-xs uppercase tracking-[0.2em] text-muted mt-2">
+                                        Monitoramento
+                                    </p>
+
+                                </div>
+
+                                <div
+                                    class="border border-border rounded-2xl p-6">
+
+                                    <p
+                                        class="font-display text-3xl text-primary">
+                                        Edge IoT
+                                    </p>
+
+                                    <p
+                                        class="font-mono text-xs uppercase tracking-[0.2em] text-muted mt-2">
+                                        Arquitetura Aplicada
+                                    </p>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </section>
+
+                <!-- FOOTER -->
+
+                <footer class="py-10 border-t border-border">
+                    <div
+                        class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-4">
+                        <div
+                            class="font-mono text-xs tracking-[0.2em] uppercase text-primary">
+                            MARIA_ACYOLE // SOFTWARE_ENGINEER_V01
+                        </div>
+
+                        <div class="font-mono text-xs text-muted">
+                            © 2026 Maria Eduarda Sousa Acyole de Oliveira
+                        </div>
+
+                        <div
+                            class="flex gap-6 font-mono text-xs uppercase tracking-[0.2em]">
+                            <a
+                                href="https://mariaeduardaacyole.github.io/NIMBOS---GS/"
+                                target="_blank">GitHub</a>
+                            <a
+                                href="https://www.linkedin.com/in/maria-eduarda-acyole-07724723b"
+                                target="_blank">LinkedIn</a>
+                            <a href="index.html">Portfólio</a>
+                        </div>
+                    </div>
+                </footer>
+            </body>
+        </html>

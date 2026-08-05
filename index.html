@@ -152,6 +152,159 @@
       .hover-glow:hover {
         box-shadow: 0 0 30px rgba(169, 46, 95, 0.15);
       }
+      @keyframes cardFloat {
+        0% {
+          opacity: 0;
+          transform: translateY(28px);
+        }
+        100% {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      @keyframes projectShine {
+        0% {
+          transform: translateX(-140%) skewX(-18deg);
+          opacity: 0;
+        }
+        15% {
+          opacity: 1;
+        }
+        100% {
+          transform: translateX(180%) skewX(-18deg);
+          opacity: 0;
+        }
+      }
+      .projects-counter {
+        position: relative;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.7rem 1rem;
+        border-radius: 9999px;
+        background: rgba(82, 0, 38, 0.06);
+        border: 1px solid rgba(82, 0, 38, 0.12);
+        box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.7);
+      }
+      .projects-counter::before {
+        content: "";
+        width: 0.5rem;
+        height: 0.5rem;
+        border-radius: 9999px;
+        background: linear-gradient(135deg, #520026, #a92e5f);
+        box-shadow: 0 0 14px rgba(169, 46, 95, 0.6);
+      }
+      .project-card {
+        position: relative;
+        overflow: hidden;
+        background: rgba(255, 255, 255, 0.08);
+        border: 1px solid rgba(82, 0, 38, 0.18);
+        box-shadow: 0 20px 45px rgba(36, 25, 27, 0.12);
+        transition:
+          transform 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+          box-shadow 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+          border-color 0.35s ease;
+        animation: cardFloat 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
+      }
+      .project-card::before {
+        content: "";
+        position: absolute;
+        inset: -35% -15%;
+        background: linear-gradient(
+          120deg,
+          transparent 28%,
+          rgba(255, 255, 255, 0.34) 48%,
+          transparent 68%
+        );
+        transform: translateX(-140%) skewX(-18deg);
+        opacity: 0;
+        z-index: 2;
+        pointer-events: none;
+      }
+      .project-card:hover {
+        transform: translateY(-10px) scale(1.01);
+        border-color: rgba(169, 46, 95, 0.4);
+        box-shadow: 0 30px 80px rgba(82, 0, 38, 0.2);
+      }
+      .project-card:hover::before {
+        animation: projectShine 1.3s ease;
+      }
+      .project-card__media {
+        position: absolute;
+        inset: 0;
+        transform: scale(1.04);
+        transition:
+          transform 1s ease,
+          filter 0.9s ease;
+        filter: grayscale(1) contrast(1.06) brightness(0.8);
+      }
+      .project-card:hover .project-card__media {
+        transform: scale(1.11);
+        filter: grayscale(0.2) contrast(1.08) brightness(0.95);
+      }
+      .project-card__overlay {
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+          180deg,
+          rgba(31, 14, 20, 0.18) 0%,
+          rgba(31, 14, 20, 0.52) 55%,
+          rgba(82, 0, 38, 0.82) 100%
+        );
+      }
+      .project-card__content {
+        position: absolute;
+        inset: auto 0 0 0;
+        padding: 2rem;
+        z-index: 3;
+        transform: translateY(10px);
+        transition: transform 0.5s ease;
+      }
+      .project-card:hover .project-card__content {
+        transform: translateY(0);
+      }
+      .project-card__eyebrow {
+        display: inline-block;
+        margin-bottom: 0.75rem;
+        color: rgba(255, 255, 255, 0.8);
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        font-size: 12px;
+        font-family: "JetBrains Mono", monospace;
+      }
+      .project-card__link {
+        position: relative;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding-bottom: 0.2rem;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.4);
+        color: #fff;
+        transition:
+          gap 0.35s ease,
+          border-color 0.35s ease;
+      }
+      .project-card__link:hover {
+        gap: 0.8rem;
+        border-color: rgba(255, 255, 255, 0.9);
+      }
+      .project-card__cta {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.8rem 1.2rem;
+        border: 1px solid rgba(255, 255, 255, 0.35);
+        border-radius: 9999px;
+        background: rgba(255, 255, 255, 0.08);
+        color: #fff;
+        transition:
+          background 0.35s ease,
+          transform 0.35s ease;
+      }
+      .project-card__cta:hover {
+        background: rgba(255, 255, 255, 0.14);
+        transform: translateY(-2px);
+      }
       .timeline-line {
         width: 1px;
         background: linear-gradient(
@@ -257,8 +410,8 @@
           >terminal</span
         >
         <span
-          class="font-label-mono-md text-label-mono-md tracking-widest text-primary uppercase"
-          >MARIA EDUARDA_ACYOLE // SOFTWARE_ENGINEER_STUDENT</span
+          class="font-label-mono-md text-label-mono-md tracking-widest text-primary uppercase text-xs sm:text-sm md:text-base"
+          >MARIA EDUARDA_ACYOLE</span
         >
       </div>
       <div class="hidden md:flex gap-12 font-label-mono-md text-label-mono-md">
@@ -270,7 +423,7 @@
         <a
           class="text-on-surface-variant/70 hover:text-primary-fixed-dim transition-colors duration-500"
           href="#projects"
-          >PROJECTS</a
+          >PROJETOS</a
         >
         <a
           class="text-on-surface-variant/70 hover:text-primary-fixed-dim transition-colors duration-500"
@@ -283,13 +436,48 @@
           >CONTATO</a
         >
       </div>
-      <div class="flex items-center gap-base">
-        <span
-          class="material-symbols-outlined text-primary cursor-pointer active:scale-95 transition-all"
-          >menu</span
+      <div class="flex items-center gap-base md:hidden">
+        <button
+          id="mobile-menu-button"
+          type="button"
+          class="inline-flex items-center justify-center rounded-full border border-primary/20 bg-primary/5 p-2 text-primary transition-all active:scale-95"
+          aria-controls="mobile-menu"
+          aria-expanded="false"
+          aria-label="Abrir menu"
         >
+          <span id="mobile-menu-icon" class="material-symbols-outlined text-2xl"
+            >menu</span
+          >
+        </button>
       </div>
     </nav>
+    <div
+      id="mobile-menu"
+      class="fixed left-0 right-0 top-20 z-40 hidden border-b border-outline-variant/20 bg-surface-container/95 backdrop-blur-xl shadow-[0_12px_35px_rgba(82,0,38,0.12)] md:hidden"
+    >
+      <div class="flex flex-col px-margin-mobile py-6 gap-4 font-label-mono-md">
+        <a
+          class="text-primary font-bold hover:text-primary-fixed-dim transition-colors duration-500"
+          href="#about"
+          >SOBRE</a
+        >
+        <a
+          class="text-on-surface-variant/80 hover:text-primary-fixed-dim transition-colors duration-500"
+          href="#projects"
+          >PROJETOS</a
+        >
+        <a
+          class="text-on-surface-variant/80 hover:text-primary-fixed-dim transition-colors duration-500"
+          href="#experience"
+          >TRAJETÓRIA</a
+        >
+        <a
+          class="text-on-surface-variant/80 hover:text-primary-fixed-dim transition-colors duration-500"
+          href="#contact"
+          >CONTATO</a
+        >
+      </div>
+    </div>
     <!-- Hero Section -->
     <header
       class="relative min-h-screen flex items-center pt-20 overflow-hidden"
@@ -429,7 +617,7 @@ void main() {
           <p
             class="font-label-mono-md text-label-mono-md text-on-surface-variant mt-4 uppercase tracking-wide"
           >
-            Software Engineer &amp; Data analyst
+            Dev Fullstack &amp; Data analyst
           </p>
           <p
             class="font-body-main text-lg text-on-surface-variant max-w-xl mt-8 leading-relaxed"
@@ -447,7 +635,7 @@ void main() {
             >
             <a
               class="glass-panel text-primary px-10 py-4 rounded-full font-label-mono-md tracking-wide hover:bg-primary/5 transition-all"
-              href="#"
+              href="https://www.linkedin.com/in/maria-eduarda-acyole-07724723b/"
               >CONECTAR</a
             >
           </div>
@@ -468,7 +656,10 @@ void main() {
             ></div>
             <!-- Profile photo revealed gradually inside the wireframe globe -->
             <div class="globe-photo-wrap" id="globe-photo-wrap">
-              <img alt="Maria Eduarda Acyole de Oliveira" src="img/perfil.jpeg" />
+              <img
+                alt="Maria Eduarda Acyole de Oliveira"
+                src="img/perfil.jpeg"
+              />
             </div>
             <script>
               (function () {
@@ -582,7 +773,7 @@ void main() {
               <div
                 class="absolute bottom-6 left-6 right-6 p-6 glass-panel rounded-lg"
               >
-              <div></div>
+                <div></div>
                 <p class="font-label-mono-md text-primary">
                   MARIA EDUARDA ACYOLE
                 </p>
@@ -629,9 +820,12 @@ void main() {
             </div>
           </div>
 
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-16 items-start md:col-span-12 space-y-12 reveal" >
+          <div
+            class="grid grid-cols-1 md:grid-cols-2 gap-16 items-start md:col-span-12 space-y-12 reveal"
+          >
             <div
-              class="p-10 glass-panel rounded-xl relative overflow-hidden border-l-4 border-primary reveal hover-glow transition-all duration-700">
+              class="p-10 glass-panel rounded-xl relative overflow-hidden border-l-4 border-primary reveal hover-glow transition-all duration-700"
+            >
               <div class="absolute top-0 right-0 p-6 opacity-[0.06]">
                 <span
                   class="material-symbols-outlined text-[120px] leading-none"
@@ -760,9 +954,7 @@ void main() {
                 <h4 class="font-label-mono-md text-primary mb-2 uppercase">
                   Localização
                 </h4>
-                <p class="font-headline-md text-xl">
-                  São Paulo, SP — Brasil
-                </p>
+                <p class="font-headline-md text-xl">São Paulo, SP — Brasil</p>
                 <p class="font-label-mono-sm text-on-surface-variant mt-2">
                   DISPONÍVEL PARA REMOTO, HÍBRIDO E OPORTUNIDADES PRESENCIAIS
                 </p>
@@ -778,201 +970,284 @@ void main() {
                   >
                 </div>
                 <h4 class="font-label-mono-md text-primary mb-2 uppercase">
-                  Técnica em Desenvolvimento de Sistema 
+                  Técnica em Desenvolvimento de Sistema
                 </h4>
-                <p class="font-headline-md text-xl">Escola Tecnica do Estado de São Paulo</p>
+                <p class="font-headline-md text-xl">
+                  Escola Tecnica do Estado de São Paulo
+                </p>
                 <p class="font-label-mono-sm text-on-surface-variant mt-2">
                   2022-2024
                 </p>
               </div>
             </div>
-           <div class="p-8 glass-panel rounded-xl border-l-4 border-primary">
+            <div class="p-8 glass-panel rounded-xl border-l-4 border-primary">
+              <h4 class="font-label-mono-md text-primary mb-6 uppercase">
+                Tech Stack
+              </h4>
 
-  <h4 class="font-label-mono-md text-primary mb-6 uppercase">
-    Tech Stack
-  </h4>
+              <!-- AVANÇADO -->
 
-  <!-- AVANÇADO -->
+              <div class="mb-6">
+                <p
+                  class="font-label-mono-sm uppercase tracking-[0.2em] text-green-700 mb-3"
+                >
+                  Avançado
+                </p>
 
-  <div class="mb-6">     <p class="font-label-mono-sm uppercase tracking-[0.2em] text-green-700 mb-3">       Avançado     </p>
+                <div class="flex flex-wrap gap-3">
+                  <span
+                    class="px-4 py-2 bg-green-100 border border-green-300 text-green-800 font-label-mono-sm rounded"
+                  >
+                    JAVASCRIPT
+                  </span>
 
-<div class="flex flex-wrap gap-3">
+                  <span
+                    class="px-4 py-2 bg-green-100 border border-green-300 text-green-800 font-label-mono-sm rounded"
+                  >
+                    HTML5
+                  </span>
 
-  <span class="px-4 py-2 bg-green-100 border border-green-300 text-green-800 font-label-mono-sm rounded">
-    JAVASCRIPT
-  </span>
+                  <span
+                    class="px-4 py-2 bg-green-100 border border-green-300 text-green-800 font-label-mono-sm rounded"
+                  >
+                    CSS3
+                  </span>
 
-  <span class="px-4 py-2 bg-green-100 border border-green-300 text-green-800 font-label-mono-sm rounded">
-    HTML5
-  </span>
+                    <span
+                    class="px-4 py-2 bg-green-100 border border-green-300 text-green-800 font-label-mono-sm rounded"
+                  >
+                    Python
+                  </span>
 
-  <span class="px-4 py-2 bg-green-100 border border-green-300 text-green-800 font-label-mono-sm rounded">
-    CSS3
-  </span>
+                    <span
+                    class="px-4 py-2 bg-green-100 border border-green-300 text-green-800 font-label-mono-sm rounded"
+                  >
+                    Node.js
+                  </span>
+                  <span
+                    class="px-4 py-2 bg-green-100 border border-green-300 text-green-800 font-label-mono-sm rounded"
+                  >
+                    GIT
+                  </span>
 
-  <span class="px-4 py-2 bg-green-100 border border-green-300 text-green-800 font-label-mono-sm rounded">
-    GIT
-  </span>
+                  <span
+                    class="px-4 py-2 bg-green-100 border border-green-300 text-green-800 font-label-mono-sm rounded"
+                  >
+                    GITHUB
+                  </span>
+                </div>
+              </div>
 
-  <span class="px-4 py-2 bg-green-100 border border-green-300 text-green-800 font-label-mono-sm rounded">
-    GITHUB
-  </span>
+              <!-- INTERMEDIÁRIO -->
 
-</div>
+              <div class="mb-6">
+                <p
+                  class="font-label-mono-sm uppercase tracking-[0.2em] text-blue-700 mb-3"
+                >
+                  Intermediário
+                </p>
 
-  </div>
+                <div class="flex flex-wrap gap-3">
+                  <span
+                    class="px-4 py-2 bg-blue-100 border border-blue-300 text-blue-800 font-label-mono-sm rounded"
+                  >
+                    TYPESCRIPT
+                  </span>
 
-  <!-- INTERMEDIÁRIO -->
+                  <span
+                    class="px-4 py-2 bg-blue-100 border border-blue-300 text-blue-800 font-label-mono-sm rounded"
+                  >
+                    REACT
+                  </span>
 
-  <div class="mb-6">     <p class="font-label-mono-sm uppercase tracking-[0.2em] text-blue-700 mb-3">       Intermediário     </p>
+                  <span
+                    class="px-4 py-2 bg-blue-100 border border-blue-300 text-blue-800 font-label-mono-sm rounded"
+                  >
+                    NEXT.JS
+                  </span>
 
-<div class="flex flex-wrap gap-3">
 
-  <span class="px-4 py-2 bg-blue-100 border border-blue-300 text-blue-800 font-label-mono-sm rounded">
-    TYPESCRIPT
-  </span>
+                  <span
+                    class="px-4 py-2 bg-blue-100 border border-blue-300 text-blue-800 font-label-mono-sm rounded"
+                  >
+                    SUPABASE
+                  </span>
 
-  <span class="px-4 py-2 bg-blue-100 border border-blue-300 text-blue-800 font-label-mono-sm rounded">
-    REACT
-  </span>
+                  <span
+                    class="px-4 py-2 bg-blue-100 border border-blue-300 text-blue-800 font-label-mono-sm rounded"
+                  >
+                    POSTGRESQL
+                  </span>
 
-  <span class="px-4 py-2 bg-blue-100 border border-blue-300 text-blue-800 font-label-mono-sm rounded">
-    NEXT.JS
-  </span>
+                  <span
+                    class="px-4 py-2 bg-blue-100 border border-blue-300 text-blue-800 font-label-mono-sm rounded"
+                  >
+                    TAILWIND CSS
+                  </span>
 
-  <span class="px-4 py-2 bg-blue-100 border border-blue-300 text-blue-800 font-label-mono-sm rounded">
-    NODE.JS
-  </span>
+                  <span
+                    class="px-4 py-2 bg-blue-100 border border-blue-300 text-blue-800 font-label-mono-sm rounded"
+                  >
+                    SQL
+                  </span>
+                  
+                  <span
+                    class="px-4 py-2 bg-blue-100 border border-blue-300 text-blue-800 font-label-mono-sm rounded"
+                  >
+                    Oficce 365
+                  </span>
+                </div>
+              </div>
 
-  <span class="px-4 py-2 bg-blue-100 border border-blue-300 text-blue-800 font-label-mono-sm rounded">
-    PYTHON
-  </span>
+              <!-- INICIANTE -->
 
-  <span class="px-4 py-2 bg-blue-100 border border-blue-300 text-blue-800 font-label-mono-sm rounded">
-    SUPABASE
-  </span>
+              <div>
+                <p
+                  class="font-label-mono-sm uppercase tracking-[0.2em] text-amber-700 mb-3"
+                >
+                  Iniciante / Em evolução
+                </p>
 
-  <span class="px-4 py-2 bg-blue-100 border border-blue-300 text-blue-800 font-label-mono-sm rounded">
-    POSTGRESQL
-  </span>
+                <div class="flex flex-wrap gap-3">
+                  <span
+                    class="px-4 py-2 bg-amber-100 border border-amber-300 text-amber-800 font-label-mono-sm rounded"
+                  >
+                    AWS
+                  </span>
 
-  <span class="px-4 py-2 bg-blue-100 border border-blue-300 text-blue-800 font-label-mono-sm rounded">
-    TAILWIND CSS
-  </span>
+                  <span
+                    class="px-4 py-2 bg-amber-100 border border-amber-300 text-amber-800 font-label-mono-sm rounded"
+                  >
+                    Java
+                  </span>
 
-   <span class="px-4 py-2 bg-blue-100 border border-blue-300 text-blue-800 font-label-mono-sm rounded">
-    SQL
-  </span>
+                  <span
+                    class="px-4 py-2 bg-amber-100 border border-amber-300 text-amber-800 font-label-mono-sm rounded"
+                  >
+                    C
+                  </span>
+                  <span
+                    class="px-4 py-2 bg-amber-100 border border-amber-300 text-amber-800 font-label-mono-sm rounded"
+                  >
+                    CLOUD COMPUTING
+                  </span>
 
-</div>
+                  <span
+                    class="px-4 py-2 bg-amber-100 border border-amber-300 text-amber-800 font-label-mono-sm rounded"
+                  >
+                    INTELIGÊNCIA ARTIFICIAL
+                  </span>
 
-  </div>
-
-  <!-- INICIANTE -->
-
-  <div>     <p class="font-label-mono-sm uppercase tracking-[0.2em] text-amber-700 mb-3">       Iniciante / Em evolução     </p>
-
-<div class="flex flex-wrap gap-3">
-
-  <span class="px-4 py-2 bg-amber-100 border border-amber-300 text-amber-800 font-label-mono-sm rounded">
-    AWS
-  </span>
-
-  
-  <span class="px-4 py-2 bg-amber-100 border border-amber-300 text-amber-800 font-label-mono-sm rounded">
-    Java
-  </span>
-
-    <span class="px-4 py-2 bg-amber-100 border border-amber-300 text-amber-800 font-label-mono-sm rounded">
-    C
-  </span>
-  <span class="px-4 py-2 bg-amber-100 border border-amber-300 text-amber-800 font-label-mono-sm rounded">
-    CLOUD COMPUTING
-  </span>
-
-  <span class="px-4 py-2 bg-amber-100 border border-amber-300 text-amber-800 font-label-mono-sm rounded">
-    INTELIGÊNCIA ARTIFICIAL
-  </span>
-
-  <span class="px-4 py-2 bg-amber-100 border border-amber-300 text-amber-800 font-label-mono-sm rounded">
-    IOT
-  </span>
-
-</div>
-
-  </div>
-
-</div>
-
-<!-- SOFT SKILLS -->
-
-<div class="p-8 glass-panel rounded-xl border-l-4 border-primary mt-8">
-
-  <h4 class="font-label-mono-md text-primary mb-6 uppercase">     Soft Skills   </h4>
-
-  <div class="flex flex-wrap gap-3">
-
-<span class="px-4 py-2 bg-primary/5 border border-primary/20 text-primary font-label-mono-sm rounded">
-  APRENDIZADO RÁPIDO
-</span>
-
-<span class="px-4 py-2 bg-primary/5 border border-primary/20 text-primary font-label-mono-sm rounded">
-  RESOLUÇÃO DE PROBLEMAS
-</span>
-
-<span class="px-4 py-2 bg-primary/5 border border-primary/20 text-primary font-label-mono-sm rounded">
-  PENSAMENTO ANALÍTICO
-</span>
-
-<span class="px-4 py-2 bg-primary/5 border border-primary/20 text-primary font-label-mono-sm rounded">
-  ORGANIZAÇÃO
-</span>
-
-<span class="px-4 py-2 bg-primary/5 border border-primary/20 text-primary font-label-mono-sm rounded">
-  TRABALHO EM EQUIPE
-</span>
-
-<span class="px-4 py-2 bg-primary/5 border border-primary/20 text-primary font-label-mono-sm rounded">
-  COMUNICAÇÃO
-</span>
-
-<span class="px-4 py-2 bg-primary/5 border border-primary/20 text-primary font-label-mono-sm rounded">
-  ADAPTABILIDADE
-</span>
-
-<span class="px-4 py-2 bg-primary/5 border border-primary/20 text-primary font-label-mono-sm rounded">
-  PROATIVIDADE
-</span>
-
-<span class="px-4 py-2 bg-primary/5 border border-primary/20 text-primary font-label-mono-sm rounded">
-  AUTONOMIA
-</span>
-
-<span class="px-4 py-2 bg-primary/5 border border-primary/20 text-primary font-label-mono-sm rounded">
-  PERSISTÊNCIA
-</span>
-
-<span class="px-4 py-2 bg-primary/5 border border-primary/20 text-primary font-label-mono-sm rounded">
-  GESTÃO DE TEMPO
-</span>
-
-<span class="px-4 py-2 bg-primary/5 border border-primary/20 text-primary font-label-mono-sm rounded">
-  CURIOSIDADE TECNOLÓGICA
-</span>
-
-<span class="px-4 py-2 bg-primary/5 border border-primary/20 text-primary font-label-mono-sm rounded">
-  RESPONSABILIDADE
-</span>
-
-<span class="px-4 py-2 bg-primary/5 border border-primary/20 text-primary font-label-mono-sm rounded">
-  FOCO EM RESULTADOS
-</span>
-
-  </div>
-
-</div>
-
+                  <span
+                    class="px-4 py-2 bg-amber-100 border border-amber-300 text-amber-800 font-label-mono-sm rounded"
+                  >
+                    IOT
+                  </span>
+                </div>
+              </div>
             </div>
+
+            <!-- SOFT SKILLS -->
+
+            <div
+              class="p-8 glass-panel rounded-xl border-l-4 border-primary mt-8"
+            >
+              <h4 class="font-label-mono-md text-primary mb-6 uppercase">
+                Soft Skills
+              </h4>
+
+              <div class="flex flex-wrap gap-3">
+                <span
+                  class="px-4 py-2 bg-primary/5 border border-primary/20 text-primary font-label-mono-sm rounded"
+                >
+                  SCRUM
+                </span>
+                <span
+                  class="px-4 py-2 bg-primary/5 border border-primary/20 text-primary font-label-mono-sm rounded"
+                >
+                  APRENDIZADO RÁPIDO
+                </span>
+
+                <span
+                  class="px-4 py-2 bg-primary/5 border border-primary/20 text-primary font-label-mono-sm rounded"
+                >
+                  RESOLUÇÃO DE PROBLEMAS
+                </span>
+
+                <span
+                  class="px-4 py-2 bg-primary/5 border border-primary/20 text-primary font-label-mono-sm rounded"
+                >
+                  PENSAMENTO ANALÍTICO
+                </span>
+
+                <span
+                  class="px-4 py-2 bg-primary/5 border border-primary/20 text-primary font-label-mono-sm rounded"
+                >
+                  ORGANIZAÇÃO
+                </span>
+
+                <span
+                  class="px-4 py-2 bg-primary/5 border border-primary/20 text-primary font-label-mono-sm rounded"
+                >
+                  TRABALHO EM EQUIPE
+                </span>
+
+                <span
+                  class="px-4 py-2 bg-primary/5 border border-primary/20 text-primary font-label-mono-sm rounded"
+                >
+                  COMUNICAÇÃO
+                </span>
+
+                <span
+                  class="px-4 py-2 bg-primary/5 border border-primary/20 text-primary font-label-mono-sm rounded"
+                >
+                  ADAPTABILIDADE
+                </span>
+
+                <span
+                  class="px-4 py-2 bg-primary/5 border border-primary/20 text-primary font-label-mono-sm rounded"
+                >
+                  PROATIVIDADE
+                </span>
+
+                <span
+                  class="px-4 py-2 bg-primary/5 border border-primary/20 text-primary font-label-mono-sm rounded"
+                >
+                  AUTONOMIA
+                </span>
+
+                <span
+                  class="px-4 py-2 bg-primary/5 border border-primary/20 text-primary font-label-mono-sm rounded"
+                >
+                  PERSISTÊNCIA
+                </span>
+
+                <span
+                  class="px-4 py-2 bg-primary/5 border border-primary/20 text-primary font-label-mono-sm rounded"
+                >
+                  GESTÃO DE TEMPO
+                </span>
+
+                <span
+                  class="px-4 py-2 bg-primary/5 border border-primary/20 text-primary font-label-mono-sm rounded"
+                >
+                  CURIOSIDADE TECNOLÓGICA
+                </span>
+
+                <span
+                  class="px-4 py-2 bg-primary/5 border border-primary/20 text-primary font-label-mono-sm rounded"
+                >
+                  RESPONSABILIDADE
+                </span>
+
+                <span
+                  class="px-4 py-2 bg-primary/5 border border-primary/20 text-primary font-label-mono-sm rounded"
+                >
+                  FOCO EM RESULTADOS
+                </span>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -988,36 +1263,33 @@ void main() {
             Projetos em Destaque
           </h2>
           <span
-            class="font-label-mono-sm text-on-surface-variant uppercase tracking-tighter"
+            class="projects-counter font-label-mono-sm text-on-surface-variant uppercase tracking-tighter"
             >001 — 004 / PROJETOS_REAIS</span
           >
         </div>
         <div class="grid grid-cols-1 md:grid-cols-12 gap-gutter">
           <!-- Large Card: Passa a Bola -->
-          <div
-            class="md:col-span-8 group relative overflow-hidden h-[600px] glass-panel rounded-xl reveal hover-glow transition-all duration-700"
+          <article
+            class="project-card md:col-span-8 group relative h-[600px] reveal"
             style="animation-delay: 0.1s"
           >
-            <div
-              class="absolute inset-0 grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-1000"
-            >
+            <div class="project-card__media">
               <div
                 class="w-full h-full bg-cover bg-center"
                 data-alt="Mockup de plataforma esportiva Passa a Bola, conectando atletas, equipes e organizadores de eventos, em estilo editorial tech-couture com tons de vinho e creme."
                 style="
                   background-image: url(&quot;img/passaabola.jpg&quot;);
+                  height: 100%;
                 "
               ></div>
             </div>
-            <div
-              class="absolute inset-0 bg-gradient-to-t from-primary/80 to-transparent opacity-60 group-hover:opacity-40 transition-opacity"
-            ></div>
-            <div class="absolute bottom-0 left-0 p-12 text-white">
-              <p class="font-label-mono-sm mb-2 opacity-80">
+            <div class="project-card__overlay"></div>
+            <div class="project-card__content text-white">
+              <p class="project-card__eyebrow">
                 FULL STACK / Tecnologia Esportiva
               </p>
               <h3 class="font-headline-md text-4xl mb-4">Passa a Bola</h3>
-              <p class="font-body-main text-white/70 mb-6 max-w-md">
+              <p class="font-body-main text-white/75 mb-6 max-w-md">
                 Plataforma desenvolvida em Next.js, React, TypeScript, Supabase
                 e PostgreSQL para conectar atletas, equipes e organizadores de
                 eventos esportivos.
@@ -1025,108 +1297,105 @@ void main() {
               <p class="font-label-mono-sm mb-6 opacity-70">
                 Next.js • React • TypeScript • Supabase • PostgreSQL
               </p>
-              <div class="flex flex-wrap gap-6">
+              <div class="flex flex-wrap gap-5">
                 <a
-                  class="inline-flex items-center gap-2 font-label-mono-md border-b border-white/40 pb-1 group-hover:gap-4 transition-all"
+                  class="project-card__link font-label-mono-md"
                   href="./passaabola.html"
-                  >VER PROJETO
+                >
+                  VER PROJETO
                   <span class="material-symbols-outlined text-sm"
                     >arrow_forward</span
-                  ></a
-                >
+                  >
+                </a>
                 <a
-                  class="inline-flex items-center gap-2 font-label-mono-md border-b border-white/40 pb-1 hover:gap-4 transition-all"
+                  class="project-card__link font-label-mono-md"
                   href="https://github.com/MariaEduardaAcyole/Passa_a_Bola-Fiap"
                   target="_blank"
-                  >GITHUB
-                  <span class="material-symbols-outlined text-sm">code</span></a
                 >
+                  GITHUB
+                  <span class="material-symbols-outlined text-sm">code</span>
+                </a>
                 <a
-                  class="inline-flex items-center gap-2 font-label-mono-md border-b border-white/40 pb-1 hover:gap-4 transition-all"
+                  class="project-card__link font-label-mono-md"
                   href="./passaabola.html"
-                  >DEMO
+                >
+                  DEMO
                   <span class="material-symbols-outlined text-sm"
                     >play_arrow</span
-                  ></a
-                >
+                  >
+                </a>
               </div>
             </div>
-          </div>
+          </article>
+
           <!-- Small Card: Dashboard LGPD -->
-          <div
-            class="md:col-span-4 group relative overflow-hidden h-[600px] glass-panel rounded-xl reveal hover-glow transition-all duration-700"
+          <article
+            class="project-card md:col-span-4 group relative h-[600px] reveal"
             style="animation-delay: 0.2s"
           >
-            <div
-              class="absolute inset-0 grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-1000"
-            >
+            <div class="project-card__media">
               <div
                 class="w-full h-full bg-cover bg-center"
                 data-alt="Dashboard analítico de conformidade LGPD com matriz de riscos, inventário de dados e gráficos interativos, em estilo minimalista."
                 style="
                   background-image: url(&quot;img/dashboard.gif&quot;);
+                  height: 100%;
                 "
               ></div>
             </div>
-            <div
-              class="absolute inset-0 bg-gradient-to-t from-primary/80 to-transparent opacity-60"
-            ></div>
-            <div class="absolute bottom-0 left-0 p-12 text-white">
-              <p class="font-label-mono-sm mb-2 opacity-80">
-                DATA / COMPLIANCE
-              </p>
+            <div class="project-card__overlay"></div>
+            <div class="project-card__content text-white">
+              <p class="project-card__eyebrow">DATA / COMPLIANCE</p>
               <h3 class="font-headline-md text-3xl mb-4">Dashboard LGPD</h3>
-              <p class="font-body-main text-white/70 mb-6">
+              <p class="font-body-main text-white/75 mb-6">
                 Visualização e análise de inventário de dados, matriz de riscos
                 e indicadores de conformidade.
               </p>
               <p class="font-label-mono-sm mb-6 opacity-70">
                 JavaScript • HTML • CSS • Chart.js • XLSX
               </p>
-              <div class="flex flex-wrap gap-6">
+              <div class="flex flex-wrap gap-5">
                 <a
-                  class="inline-flex items-center gap-2 font-label-mono-md border-b border-white/40 pb-1 hover:gap-4 transition-all"
+                  class="project-card__link font-label-mono-md"
                   href="./dashboard.html"
-                  >VER PROJETO
+                >
+                  VER PROJETO
                   <span class="material-symbols-outlined text-sm"
                     >arrow_forward</span
-                  ></a
-                >
+                  >
+                </a>
                 <a
-                  class="inline-flex items-center gap-2 font-label-mono-md border-b border-white/40 pb-1 hover:gap-4 transition-all"
+                  class="project-card__link font-label-mono-md"
                   href="https://github.com/MariaEduardaAcyole/Dashboard-Totvs"
                   target="_blank"
-                  >GITHUB
-                  <span class="material-symbols-outlined text-sm">code</span></a
                 >
+                  GITHUB
+                  <span class="material-symbols-outlined text-sm">code</span>
+                </a>
               </div>
             </div>
-          </div>
+          </article>
+
           <!-- Mid Card: NIMBOS IoT -->
-          <div
-            class="md:col-span-6 group relative overflow-hidden h-[450px] glass-panel rounded-xl reveal hover-glow transition-all duration-700"
+          <article
+            class="project-card md:col-span-6 group relative h-[450px] reveal"
             style="animation-delay: 0.3s"
           >
-            <div
-              class="absolute inset-0 grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-1000"
-            >
+            <div class="project-card__media">
               <div
                 class="w-full h-full bg-cover bg-center"
                 data-alt="Projeto de monitoramento IoT NIMBOS com sensores, ESP8266, Arduino e integração MQTT em ambiente industrial minimalista."
                 style="
                   background-image: url(&quot;assets/project-nimbos.jpg&quot;);
+                  height: 100%;
                 "
               ></div>
             </div>
-            <div
-              class="absolute inset-0 bg-gradient-to-r from-primary/90 via-primary/40 to-transparent"
-            ></div>
-            <div
-              class="absolute inset-y-0 left-0 p-12 flex flex-col justify-center max-w-xl text-white"
-            >
-              <p class="font-label-mono-sm mb-2 opacity-80">IOT / EMBEDDED</p>
+            <div class="project-card__overlay"></div>
+            <div class="project-card__content text-white">
+              <p class="project-card__eyebrow">IOT / EMBEDDED</p>
               <h3 class="font-headline-md text-3xl mb-4">NIMBOS IoT</h3>
-              <p class="font-body-main text-white/70 mb-4">
+              <p class="font-body-main text-white/75 mb-4">
                 Monitoramento inteligente com sensores, ESP8266, Arduino e
                 integração MQTT para coleta e transmissão de dados em tempo
                 real.
@@ -1134,48 +1403,41 @@ void main() {
               <p class="font-label-mono-sm mb-6 opacity-70">
                 Arduino • ESP8266 • MQTT • Sensores • IoT
               </p>
-              <div class="flex flex-wrap gap-6">
+              <div class="flex flex-wrap gap-4">
+                <a class="project-card__cta font-label-mono-md" href="#">
+                  VER PROJETO
+                </a>
                 <a
-                  class="w-fit bg-white text-primary px-6 py-2 rounded-full font-label-mono-md hover:invert transition-all"
-                  href="#"
-                  >VER PROJETO</a
-                >
-                <a
-                  class="w-fit border border-white/60 text-white px-6 py-2 rounded-full font-label-mono-md hover:bg-white/10 transition-all"
+                  class="project-card__cta font-label-mono-md"
                   href="https://github.com/MariaEduardaAcyole"
                   target="_blank"
-                  >GITHUB</a
                 >
+                  GITHUB
+                </a>
               </div>
             </div>
-          </div>
+          </article>
+
           <!-- Mid Card: SatShield -->
-          <div
-            class="md:col-span-6 group relative overflow-hidden h-[450px] glass-panel rounded-xl reveal hover-glow transition-all duration-700"
+          <article
+            class="project-card md:col-span-6 group relative h-[450px] reveal"
             style="animation-delay: 0.4s"
           >
-            <div
-              class="absolute inset-0 grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-1000"
-            >
+            <div class="project-card__media">
               <div
                 class="w-full h-full bg-cover bg-center"
                 data-alt="Projeto acadêmico SatShield de análise de dados espaciais e monitoramento com bases do INPE e visualização de dados."
                 style="
                   background-image: url(&quot;assets/project-satshield.jpg&quot;);
+                  height: 100%;
                 "
               ></div>
             </div>
-            <div
-              class="absolute inset-0 bg-gradient-to-r from-primary/90 via-primary/40 to-transparent"
-            ></div>
-            <div
-              class="absolute inset-y-0 left-0 p-12 flex flex-col justify-center max-w-xl text-white"
-            >
-              <p class="font-label-mono-sm mb-2 opacity-80">
-                DATA SCIENCE / IA
-              </p>
+            <div class="project-card__overlay"></div>
+            <div class="project-card__content text-white">
+              <p class="project-card__eyebrow">DATA SCIENCE / IA</p>
               <h3 class="font-headline-md text-3xl mb-4">SatShield</h3>
-              <p class="font-body-main text-white/70 mb-4">
+              <p class="font-body-main text-white/75 mb-4">
                 Projeto acadêmico voltado para análise de dados espaciais e
                 monitoramento utilizando bases do INPE e conceitos de ciência de
                 dados.
@@ -1183,21 +1445,20 @@ void main() {
               <p class="font-label-mono-sm mb-6 opacity-70">
                 Python • Análise de Dados • IA • Visualização
               </p>
-              <div class="flex flex-wrap gap-6">
+              <div class="flex flex-wrap gap-4">
+                <a class="project-card__cta font-label-mono-md" href="#">
+                  VER PROJETO
+                </a>
                 <a
-                  class="w-fit bg-white text-primary px-6 py-2 rounded-full font-label-mono-md hover:invert transition-all"
-                  href="#"
-                  >VER PROJETO</a
-                >
-                <a
-                  class="w-fit border border-white/60 text-white px-6 py-2 rounded-full font-label-mono-md hover:bg-white/10 transition-all"
+                  class="project-card__cta font-label-mono-md"
                   href="https://github.com/MariaEduardaAcyole"
                   target="_blank"
-                  >GITHUB</a
                 >
+                  GITHUB
+                </a>
               </div>
             </div>
-          </div>
+          </article>
         </div>
       </div>
     </section>
@@ -1216,18 +1477,21 @@ void main() {
             class="absolute left-0 md:left-1/2 top-0 bottom-0 timeline-line opacity-30 transform md:-translate-x-1/2"
           ></div>
           <div class="space-y-24">
-                  <!-- Entry 0 -->
+            <!-- Entry 0 -->
             <div
               class="relative flex flex-col md:flex-row-reverse items-center reveal"
               style="animation-delay: 0.2s"
             >
               <div class="md:w-1/2 md:pl-16 mb-8 md:mb-0">
-                <span class="font-label-mono-md text-primary"
-                  >2022 — 2024</span
-                >
-                <h3 class="font-headline-md text-3xl mt-2">Técnico em Desenvolvimento de sistemas</h3>
+                <span class="font-label-mono-md text-primary">2022 — 2024</span>
+                <h3 class="font-headline-md text-3xl mt-2">
+                  Técnico em Desenvolvimento de sistemas
+                </h3>
                 <p class="font-body-main text-on-surface-variant mt-4">
-                  Programação, criação de aplicativos, construção de sites e gestão de bancos de dados. As aulas utilizam laboratórios de informática e preparam o aluno para resolver problemas reais do mercado de trabalho.
+                  Programação, criação de aplicativos, construção de sites e
+                  gestão de bancos de dados. As aulas utilizam laboratórios de
+                  informática e preparam o aluno para resolver problemas reais
+                  do mercado de trabalho.
                 </p>
               </div>
               <div
@@ -1245,8 +1509,13 @@ void main() {
                   >
                     <li>&gt; ORGANIZAÇÃO E AUTOMAÇÃO DE PROCESSOS</li>
                     <li>&gt; TRABALHO EM EQUIPE</li>
-                    <li>&gt; APOIO EM PROCESSOS DE GOVERNANÇA E PROTEÇÃO DE DADOS</li>
-                    <li>&gt; CONTATO COM PROCESSOS CORPORATIVOS TECNOLOGIA E COMPLIANCE</li>
+                    <li>
+                      &gt; APOIO EM PROCESSOS DE GOVERNANÇA E PROTEÇÃO DE DADOS
+                    </li>
+                    <li>
+                      &gt; CONTATO COM PROCESSOS CORPORATIVOS TECNOLOGIA E
+                      COMPLIANCE
+                    </li>
                   </ul>
                 </div>
               </div>
@@ -1257,14 +1526,14 @@ void main() {
               style="animation-delay: 0.1s"
             >
               <div class="md:w-1/2 md:pr-16 md:text-right mb-8 md:mb-0">
-                <span class="font-label-mono-md text-primary"
-                  >2025 — 2028</span
-                >
+                <span class="font-label-mono-md text-primary">2025 — 2028</span>
                 <h3 class="font-headline-md text-3xl mt-2">
                   Estudante de Engenharia de Software — FIAP
                 </h3>
                 <p class="font-body-main text-on-surface-variant mt-4">
-                  Estudando o bacharelado e Desenvolvendo projetos full stack, dashboards, aplicações e aparelhos IOT. Criando projetos para resolver problemas de empresas reais
+                  Estudando o bacharelado e Desenvolvendo projetos full stack,
+                  dashboards, aplicações e aparelhos IOT. Criando projetos para
+                  resolver problemas de empresas reais
                 </p>
               </div>
               <div
@@ -1297,9 +1566,7 @@ void main() {
               style="animation-delay: 0.2s"
             >
               <div class="md:w-1/2 md:pl-16 mb-8 md:mb-0">
-                <span class="font-label-mono-md text-primary"
-                  >2025 — 2026</span
-                >
+                <span class="font-label-mono-md text-primary">2025 — 2026</span>
                 <h3 class="font-headline-md text-3xl mt-2">Jovem Aprendiz</h3>
                 <p class="font-body-main text-on-surface-variant mt-4">
                   Atuação em ambiente corporativo, organização de processos,
@@ -1322,8 +1589,13 @@ void main() {
                   >
                     <li>&gt; ORGANIZAÇÃO E AUTOMAÇÃO DE PROCESSOS</li>
                     <li>&gt; TRABALHO EM EQUIPE</li>
-                    <li>&gt; APOIO EM PROCESSOS DE GOVERNANÇA E PROTEÇÃO DE DADOS</li>
-                    <li>&gt; CONTATO COM PROCESSOS CORPORATIVOS TECNOLOGIA E COMPLIANCE</li>
+                    <li>
+                      &gt; APOIO EM PROCESSOS DE GOVERNANÇA E PROTEÇÃO DE DADOS
+                    </li>
+                    <li>
+                      &gt; CONTATO COM PROCESSOS CORPORATIVOS TECNOLOGIA E
+                      COMPLIANCE
+                    </li>
                   </ul>
                 </div>
               </div>
@@ -1332,47 +1604,7 @@ void main() {
         </div>
       </div>
     </section>
-    <!-- Professional Gallery -->
-    <section class="py-32 bg-background">
-      <div
-        class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop"
-      >
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 reveal">
-          <div class="aspect-square relative overflow-hidden rounded-lg group">
-            <img
-              alt="Maria Eduarda Acyole — projeto Passa a Bola"
-              class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700"
-              src="img/passaabola.jpg"
-            />
-          </div>
-          <div
-            class="aspect-square relative overflow-hidden rounded-lg group translate-y-8"
-          >
-            <img
-              alt="Maria Eduarda Acyole — dashboard e visualização de dados"
-              class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700"
-              src="img/download.gif"
-            />
-          </div>
-          <div class="aspect-square relative overflow-hidden rounded-lg group">
-            <img
-              alt="Maria Eduarda Acyole — desenvolvimento e código"
-              class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700"
-              src="assets/gallery-3.jpg"
-            />
-          </div>
-          <div
-            class="aspect-square relative overflow-hidden rounded-lg group translate-y-8"
-          >
-            <img
-              alt="Maria Eduarda Acyole — projeto IoT NIMBOS"
-              class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700"
-              src="assets/gallery-4.jpg"
-            />
-          </div>
-        </div>
-      </div>
-    </section>
+   
     <!-- Contact Section -->
     <section class="py-32 relative bg-surface-container" id="contact">
       <div
@@ -1551,8 +1783,8 @@ void main() {
           >
           <a
             class="text-on-surface-variant hover:text-primary transition-opacity"
-            href="#"
-            >PORTFOLIO</a
+            href="https://github.com/MariaEduardaAcyole/meetmariaacyole"
+            >PORTIFOLIO</a
           >
         </div>
       </div>
@@ -1576,6 +1808,39 @@ void main() {
       document
         .querySelectorAll(".reveal")
         .forEach((el) => observer.observe(el));
+
+      const mobileMenuButton = document.getElementById("mobile-menu-button");
+      const mobileMenu = document.getElementById("mobile-menu");
+      const mobileMenuIcon = document.getElementById("mobile-menu-icon");
+
+      function setMobileMenuState(isOpen) {
+        if (!mobileMenu || !mobileMenuButton || !mobileMenuIcon) return;
+
+        mobileMenu.classList.toggle("hidden", !isOpen);
+        mobileMenuButton.setAttribute("aria-expanded", String(isOpen));
+        mobileMenuButton.setAttribute(
+          "aria-label",
+          isOpen ? "Fechar menu" : "Abrir menu"
+        );
+        mobileMenuIcon.textContent = isOpen ? "close" : "menu";
+      }
+
+      if (mobileMenuButton && mobileMenu) {
+        mobileMenuButton.addEventListener("click", () => {
+          const isOpen = mobileMenuButton.getAttribute("aria-expanded") === "true";
+          setMobileMenuState(!isOpen);
+        });
+
+        mobileMenu.querySelectorAll("a").forEach((link) => {
+          link.addEventListener("click", () => setMobileMenuState(false));
+        });
+
+        window.addEventListener("resize", () => {
+          if (window.innerWidth >= 768) {
+            setMobileMenuState(false);
+          }
+        });
+      }
 
       // Smooth Parallax for blobs (CSS only approach would be better, but subtle JS adds polish)
       window.addEventListener("mousemove", (e) => {

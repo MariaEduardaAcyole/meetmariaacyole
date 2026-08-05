@@ -1,0 +1,466 @@
+<!doctype html>
+
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Passa a Bola | Case Study</title>
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              background: "#fff8f8",
+              surface: "#fff0f2",
+              primary: "#520026",
+              accent: "#7A003C",
+              rose: "#D96A98",
+              text: "#24191b",
+              muted: "#605e5a",
+              border: "#dcbfc5",
+            },
+            fontFamily: {
+              display: ["Playfair Display", "serif"],
+              mono: ["JetBrains Mono", "monospace"],
+            },
+          },
+        },
+      };
+    </script>
+
+    <style>
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        background: #fff8f8;
+        color: #24191b;
+        overflow-x: hidden;
+      }
+
+      .glass {
+        backdrop-filter: blur(20px);
+        background: rgba(255, 255, 255, 0.55);
+        border: 1px solid rgba(122, 0, 60, 0.12);
+      }
+
+      .hero-bg {
+        background:
+          radial-gradient(
+            circle at top right,
+            rgba(217, 106, 152, 0.18),
+            transparent 40%
+          ),
+          radial-gradient(
+            circle at bottom left,
+            rgba(122, 0, 60, 0.12),
+            transparent 45%
+          ),
+          linear-gradient(180deg, #fff8f8, #fff0f2);
+      }
+
+      .reveal {
+        opacity: 0;
+        transform: translateY(28px);
+        animation: fadeUp 0.9s ease forwards;
+      }
+
+      @keyframes fadeUp {
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .section-line {
+        width: 72px;
+        height: 1px;
+        background: #7a003c;
+        margin: 0 auto 20px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- NAV -->
+
+    <nav class="fixed top-0 left-0 right-0 z-50 glass">
+      <div
+        class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between"
+      >
+        <div class="font-mono text-sm tracking-[0.25em] uppercase text-primary">
+          <a href="./index.html">
+          MARIA_ACYOLE // CASE_STUDY
+          </a>
+        </div>
+
+        
+        <div
+          class="hidden md:flex gap-8 font-mono text-xs uppercase tracking-[0.2em] text-muted"
+        >
+          <a href="#overview">Visão Geral</a>
+          <a href="#solucao">Solução</a>
+          <a href="#funcioanalidades">Funcionalidades</a>
+          <a href="#tecnologiaseskills">Tecnologias</a>
+          <a href="#resultado">Resultado</a>
+
+        </div>
+      </div>
+      
+    </nav>
+
+<!-- HERO -->
+
+<header id="overview" class="hero-bg min-h-screen flex items-center pt-24">   <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-16 items-center">
+
+<div>
+  <p class="font-mono uppercase tracking-[0.3em] text-primary text-xs mb-4">
+    Projeto pessoal • TOTVS
+  </p>
+
+  <h1 class="font-display text-6xl md:text-7xl leading-none text-primary">
+    Dashboard LGPD
+  </h1>
+
+  <p class="mt-8 text-xl leading-relaxed text-muted max-w-xl">
+    Plataforma web para gestão de inventário de dados, matriz de riscos, indicadores de conformidade e monitoramento da maturidade em LGPD.
+  </p>
+
+  <div class="mt-10 flex flex-wrap gap-4">
+    <a href="https://github.com/MariaEduardaAcyole" class="px-7 py-3 rounded-full bg-primary text-white font-mono text-xs uppercase tracking-[0.2em]">
+      GitHub
+    </a>
+
+    <a href="index.html" class="px-7 py-3 rounded-full border border-primary text-primary font-mono text-xs uppercase tracking-[0.2em]">
+      Voltar ao Portfólio
+    </a>
+  </div>
+</div>
+
+<div>
+  <div class="glass rounded-[28px] p-4 shadow-2xl">
+    <img src="img/dashboard.gif" alt="Dashboard LGPD" class="w-full rounded-[20px] object-cover">
+  </div>
+</div>
+
+  </div> </header>
+
+<!-- RESUMO -->
+
+<section id="solucao" class="py-12">   <div class="max-w-6xl mx-auto px-6">     <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+
+  <div class="glass rounded-2xl p-6 text-center">
+    <p class="font-display text-3xl text-primary">2026</p>
+    <p class="font-mono text-xs uppercase tracking-[0.2em] text-muted mt-2">Ano</p>
+  </div>
+
+  <div class="glass rounded-2xl p-6 text-center">
+    <p class="font-display text-3xl text-primary">Dashboard</p>
+    <p class="font-mono text-xs uppercase tracking-[0.2em] text-muted mt-2">Categoria</p>
+  </div>
+
+  <div class="glass rounded-2xl p-6 text-center">
+    <p class="font-display text-3xl text-primary">TOTVS</p>
+    <p class="font-mono text-xs uppercase tracking-[0.2em] text-muted mt-2">Instituição</p>
+  </div>
+
+  <div class="glass rounded-2xl p-6 text-center">
+    <p class="font-display text-3xl text-primary">Analytics</p>
+    <p class="font-mono text-xs uppercase tracking-[0.2em] text-muted mt-2">Escopo</p>
+  </div>
+
+</div>
+
+  </div> </section>
+
+<!-- GRANDE CARD DA SOLUÇÃO -->
+
+<section class="py-10">   <div class="max-w-6xl mx-auto px-6">
+
+<div class="glass rounded-[32px] p-10 md:p-12">
+  <div class="flex items-center gap-3 mb-6">
+    <div class="w-12 h-12 rounded-full bg-primary text-white flex items-center justify-center text-xl">
+      🔐
+    </div>
+    <h2 class="font-display text-4xl text-primary">A Solução</h2>
+  </div>
+
+  <p class="text-lg leading-relaxed text-muted mb-10">
+    O Dashboard LGPD foi desenvolvido para centralizar informações de conformidade com a Lei Geral de Proteção de Dados em uma única interface. A aplicação organiza inventários de dados, registros de risco, heatmaps, indicadores de maturidade, planos de ação e relatórios executivos, permitindo uma visão clara da exposição de dados pessoais e do nível de conformidade da organização.
+  </p>
+
+  <div class="grid md:grid-cols-3 gap-8">
+
+    <div>
+      <h3 class="font-mono uppercase text-xs tracking-[0.2em] text-primary mb-4">
+        Objetivo
+      </h3>
+      <p class="text-muted">
+        Facilitar o gerenciamento de dados pessoais, riscos e ações corretivas, oferecendo uma visão executiva da conformidade com a LGPD.
+      </p>
+    </div>
+
+    <div>
+      <h3 class="font-mono uppercase text-xs tracking-[0.2em] text-primary mb-4">
+        Público-alvo
+      </h3>
+      <p class="text-muted">
+        Empresas, equipes de compliance, governança, jurídico, segurança da informação e consultorias em proteção de dados.
+      </p>
+    </div>
+
+    <div>
+      <h3 class="font-mono uppercase text-xs tracking-[0.2em] text-primary mb-4">
+        Resultado
+      </h3>
+      <p class="text-muted">
+        Dashboard interativo com importação de planilhas, visualização analítica de riscos e indicadores estratégicos para tomada de decisão.
+      </p>
+    </div>
+
+  </div>
+</div>
+
+  </div> </section>
+
+<!-- FUNCIONALIDADES -->
+
+<section id="funcioanalidades" class="py-10 bg-[#fff3f5]">   <div class="max-w-6xl mx-auto px-6">
+
+<h2 class="font-display text-5xl text-primary text-center mb-12">
+  Funcionalidades
+</h2>
+
+<div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+
+  <div class="glass rounded-3xl p-8 text-center">
+    <div class="text-4xl mb-4">📊</div>
+    <h3 class="font-display text-2xl text-primary mb-2">Dashboard Executivo</h3>
+    <p class="text-muted">
+      Indicadores de conformidade, maturidade LGPD e visão consolidada dos dados.
+    </p>
+  </div>
+
+  <div class="glass rounded-3xl p-8 text-center">
+    <div class="text-4xl mb-4">🗂️</div>
+    <h3 class="font-display text-2xl text-primary mb-2">Inventário de Dados</h3>
+    <p class="text-muted">
+      Cadastro de subprocessos, tipos de dados, bases legais e compartilhamentos.
+    </p>
+  </div>
+
+  <div class="glass rounded-3xl p-8 text-center">
+    <div class="text-4xl mb-4">⚠️</div>
+    <h3 class="font-display text-2xl text-primary mb-2">Matriz de Riscos</h3>
+    <p class="text-muted">
+      Probabilidade, severidade, nível de risco e estratégias de mitigação.
+    </p>
+  </div>
+
+  <div class="glass rounded-3xl p-8 text-center">
+    <div class="text-4xl mb-4">📈</div>
+    <h3 class="font-display text-2xl text-primary mb-2">Gráficos e Heatmaps</h3>
+    <p class="text-muted">
+      Visualizações analíticas para apoio à tomada de decisão e priorização de ações.
+    </p>
+  </div>
+
+</div>
+
+  </div> </section>
+
+<!-- TECNOLOGIAS E SKILLS -->
+
+<section id="tecnologiaseskills" class="py-10">   <div class="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-10">
+
+<!-- Tecnologias -->
+<div class="glass rounded-[28px] p-8">
+  <h2 class="font-display text-4xl text-primary mb-8">
+    Tecnologias Utilizadas
+  </h2>
+
+  <div class="grid grid-cols-2 gap-4">
+
+    <div class="border border-border rounded-2xl p-4 flex items-center gap-3">
+      <span class="text-2xl"><img src="img/html.png" alt="" style=" width: 1em; height: 1em"></span>
+      <div>
+        <p class="font-semibold text-primary">HTML5</p>
+        <p class="text-sm text-muted">Estrutura</p>
+      </div>
+    </div>
+
+    <div class="border border-border rounded-2xl p-4 flex items-center gap-3">
+      <span class="text-2xl"><img src="img/css.png" alt="" style=" width: 1em; height: 1em"></span>
+      <div>
+        <p class="font-semibold text-primary">CSS3</p>
+        <p class="text-sm text-muted">Interface</p>
+      </div>
+    </div>
+
+    <div class="border border-border rounded-2xl p-4 flex items-center gap-3">
+      <span class="text-2xl"><img src="img/javascript.png" alt="" style=" width: 1em; height: 1em"></span>
+      <div>
+        <p class="font-semibold text-primary">JavaScript</p>
+        <p class="text-sm text-muted">Lógica da aplicação</p>
+      </div>
+    </div>
+
+    <div class="border border-border rounded-2xl p-4 flex items-center gap-3">
+      <span class="text-2xl"><img src="img/chartjs.png" alt="" style=" width: 1em; height: 1em"></span>
+      <div>
+        <p class="font-semibold text-primary">Chart.js</p>
+        <p class="text-sm text-muted">Visualização de dados</p>
+      </div>
+    </div>
+
+    <div class="border border-border rounded-2xl p-4 flex items-center gap-3">
+      <span class="text-2xl"><img src="img/xlsx.png" alt="" style=" width: 1em; height: 1em"></span>
+      <div>
+        <p class="font-semibold text-primary">XLSX</p>
+        <p class="text-sm text-muted">Importação de planilhas</p>
+      </div>
+    </div>
+
+    <div class="border border-border rounded-2xl p-4 flex items-center gap-3">
+      <span class="text-2xl"><img src="img/papaparse.png" alt="" style=" width: 1em; height: 1em"></span>
+      <div>
+        <p class="font-semibold text-primary">PapaParse</p>
+        <p class="text-sm text-muted">Leitura de CSV</p>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- Skills -->
+<div class="glass rounded-[28px] p-8">
+  <h2 class="font-display text-4xl text-primary mb-8">
+    Skills Aplicadas
+  </h2>
+
+  <div class="grid grid-cols-2 gap-4">
+
+    <div class="border border-border rounded-2xl p-4">
+      Desenvolvimento Front-end
+    </div>
+
+    <div class="border border-border rounded-2xl p-4">
+      Visualização de Dados
+    </div>
+
+    <div class="border border-border rounded-2xl p-4">
+      Dashboards Analíticos
+    </div>
+
+    <div class="border border-border rounded-2xl p-4">
+      Manipulação de Planilhas
+    </div>
+
+    <div class="border border-border rounded-2xl p-4">
+      Modelagem de Riscos
+    </div>
+
+    <div class="border border-border rounded-2xl p-4">
+      Estruturação de Dados
+    </div>
+
+    <div class="border border-border rounded-2xl p-4">
+      UX para Indicadores
+    </div>
+
+    <div class="border border-border rounded-2xl p-4">
+      Governança de Dados
+    </div>
+
+  </div>
+</div>
+
+  </div> </section>
+
+<!-- RESULTADO -->
+
+<section id="resultado" class="py-10 bg-[#fff3f5]">   <div class="max-w-6xl mx-auto px-6">     <div class="glass rounded-[32px] p-10 md:p-12 text-center">
+
+  <h2 class="font-display text-5xl text-primary mb-6">
+    Resultado do Projeto
+  </h2>
+
+  <p class="text-lg text-muted max-w-3xl mx-auto mb-10">
+    O Dashboard LGPD consolidou conhecimentos em JavaScript, manipulação de dados, visualização analítica, integração de módulos e organização de informações de conformidade. O projeto proporcionou experiência prática na construção de dashboards executivos voltados para governança, proteção de dados e apoio à tomada de decisão.
+  </p>
+
+  <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+
+    <div class="border border-border rounded-2xl p-6">
+      <p class="font-display text-3xl text-primary">+15</p>
+      <p class="font-mono text-xs uppercase tracking-[0.2em] text-muted mt-2">
+        Gráficos e Indicadores
+      </p>
+    </div>
+
+    <div class="border border-border rounded-2xl p-6">
+      <p class="font-display text-3xl text-primary">100%</p>
+      <p class="font-mono text-xs uppercase tracking-[0.2em] text-muted mt-2">
+        Importação de Dados
+      </p>
+    </div>
+
+    <div class="border border-border rounded-2xl p-6">
+      <p class="font-display text-3xl text-primary">6</p>
+      <p class="font-mono text-xs uppercase tracking-[0.2em] text-muted mt-2">
+        Módulos Integrados
+      </p>
+    </div>
+
+    <div class="border border-border rounded-2xl p-6">
+      <p class="font-display text-3xl text-primary">Analytics</p>
+      <p class="font-mono text-xs uppercase tracking-[0.2em] text-muted mt-2">
+        Experiência Prática
+      </p>
+    </div>
+
+  </div>
+
+</div>
+
+  </div> </section>
+
+
+    <!-- FOOTER -->
+
+    <footer class="py-10 border-t border-border">
+      <div
+        class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-4"
+      >
+        <div class="font-mono text-xs tracking-[0.2em] uppercase text-primary">
+          MARIA_ACYOLE // SOFTWARE_ENGINEER_V01
+        </div>
+
+        <div class="font-mono text-xs text-muted">
+          © 2026 Maria Eduarda Sousa Acyole de Oliveira
+        </div>
+
+        <div class="flex gap-6 font-mono text-xs uppercase tracking-[0.2em]">
+          <a href="https://github.com/MariaEduardaAcyole" target="_blank"
+            >GitHub</a
+          >
+          <a
+            href="https://www.linkedin.com/in/maria-eduarda-acyole-07724723b"
+            target="_blank"
+            >LinkedIn</a
+          >
+          <a href="index.html">Portfólio</a>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
